@@ -1,6 +1,6 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
-* Студент: [Максим Симаков](https://up.htmlacademy.ru/javascript/20/user/1131239)
+* Студент: [Максим Симаков](https://up.htmlacademy.ru/javascript/20/user/1131239).
 * Наставник: [Евгений Фаллер](https://htmlacademy.ru/profile/id505933).
 
 ---
