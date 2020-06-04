@@ -1,7 +1,5 @@
 'use strict';
 
-var map = document.querySelector('.map');
-map.classList.remove('map--faded');
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
@@ -26,6 +24,8 @@ var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
 var pinList = document.querySelector('.map__pins');
+var map = document.querySelector('.map');
+map.classList.remove('map--faded');
 
 var getRandomLengthArr = function (arr) {
   var arrlength = Math.floor(Math.random() * arr.length);
