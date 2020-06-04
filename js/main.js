@@ -1,24 +1,48 @@
 'use strict';
 
+var map = document.querySelector('.map');
+map.classList.remove('map--faded');
+var MIN_PIN_Y = 130;
+var MAX_PIN_Y;
+var PIN_X;
+var QUANTITY_ADS = 8;
 var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
-var pins = document.querySelector('.map__pins');
-var photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-var features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-document.querySelector('.map').classList.remove('map--faded');
+var pinList = document.querySelector('.map__pins');
+var photos = [
+  'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+var features = [
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+  'conditioner'];
 
-var randomLength = function (arr) {
-  var length = Math.floor(Math.random() * arr.length);
-  var variable = [];
-  for (var k = 0; k < length.length; k++) {
-    variable.push(arr[k]);
+var getRandomLengthArr = function (arr) {
+  var arrlength = Math.floor(Math.random() * arr.length);
+  var newArr = [];
+  for (var k = 0; k < arrlength; k++) {
+    newArr.push(arr[k]);
   }
-  return variable;
+  return newArr;
 };
 
-var getArrayAds = function () {
-  for (var i = 1; i <= 8; i++) {
+var getRandomX = function () {
+  PIN_X = Math.floor(Math.random() * map.offsetWidth);
+  return PIN_X;
+};
+
+var getRandomY = function () {
+  MAX_PIN_Y = Math.floor(Math.random() * 500) + MIN_PIN_Y;
+  return MAX_PIN_Y;
+};
+
+var arrayAds = function () {
+  for (var i = 1; i <= QUANTITY_ADS; i++) {
     var ad = {
       'author': {
         'avatar': 'img/avatars/user' + ('0' + i) + '.png'
@@ -32,34 +56,33 @@ var getArrayAds = function () {
         'guests': 7,
         'checkin': Math.floor(Math.random() * 3) + 12 + ':00',
         'checkout': Math.floor(Math.random() * 3) + 12 + ':00',
-        'features': randomLength(features),
+        'features': getRandomLengthArr(features),
         'description': 'Описание',
-        'photos': randomLength(photos)
+        'photos': getRandomLengthArr(photos)
       },
       'location': {
-        'x': Math.floor(Math.random() * 500) + 130,
-        'y': Math.floor(Math.random() * 500) + 130
+        'x': getRandomX(),
+        'y': getRandomY()
       }
     };
     ads.push(ad);
   }
 };
 
-var createElement = function (publicity) {
+var getCreateElement = function (publicity) {
   var pinElement = pinTemplate.cloneNode(true);
-
-  pinElement.style.left = publicity.location.x + 50 + 'px';
-  pinElement.style.top = publicity.location.y + 70 + 'px';
+  pinElement.style.left = publicity.location.x - 25 + 'px';
+  pinElement.style.top = publicity.location.y - 70 + 'px';
   pinElement.children[0].src = publicity.author.avatar;
   pinElement.children[0].alt = publicity.offer.title;
 
   return pinElement;
 };
 
-getArrayAds();
+arrayAds();
 
 for (var j = 0; j < ads.length; j++) {
-  pinFragment.appendChild(createElement(ads[j]));
+  pinFragment.appendChild(getCreateElement(ads[j]));
 }
 
-pins.appendChild(pinFragment);
+pinList.appendChild(pinFragment);
