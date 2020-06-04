@@ -30,8 +30,8 @@ var getArrayAds = function () {
         'type': 'house',
         'rooms': 5,
         'guests': 7,
-        'checkin': '13:00',
-        'checkout': '14:00',
+        'checkin': Math.floor(Math.random() * 3) + 12 + ':00',
+        'checkout': Math.floor(Math.random() * 3) + 12 + ':00',
         'features': randomLength(features),
         'description': 'Описание',
         'photos': randomLength(photos)
