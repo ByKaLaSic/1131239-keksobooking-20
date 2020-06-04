@@ -8,8 +8,9 @@ var TIMES = [
   '13:00',
   '14:00'
 ];
-var TYPE = ['palace', 'flat', 'house', 'bungalo'];
-var PHOTOS = [
+// var TYPES = ['palace', 'flat', 'house', 'bungalo'];
+var TYPES_RUS = ['Дворец', 'Квартира', 'Дом', 'Бунгало'];
+var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
@@ -24,12 +25,15 @@ var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
 var pinList = document.querySelector('.map__pins');
+var cardFragment = document.createDocumentFragment();
+var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
+var adFilter = document.querySelector('.map__filters-container');
 var map = document.querySelector('.map');
 map.classList.remove('map--faded');
 
 var random = {
   getRandomLengthArr: function (arr) {
-    var arrlength = Math.floor(Math.random() * arr.length);
+    var arrlength = Math.ceil(Math.random() * arr.length);
     var newArr = [];
     for (var k = 0; k < arrlength; k++) {
       newArr.push(arr[k]);
@@ -58,15 +62,15 @@ var arrayAds = function () {
       'offer': {
         'title': 'Заголовок',
         'address': '600, 350',
-        'price': 3000,
-        'type': random.getRandomLineArr(TYPE),
-        'rooms': 5,
+        'price': 7000,
+        'type': random.getRandomLineArr(TYPES_RUS),
+        'rooms': 3,
         'guests': 7,
         'checkin': random.getRandomLineArr(TIMES),
         'checkout': random.getRandomLineArr(TIMES),
         'features': random.getRandomLengthArr(FEATURES),
         'description': 'Описание',
-        'photos': random.getRandomLengthArr(PHOTOS)
+        'photos': random.getRandomLengthArr(photos)
       },
       'location': {
         'x': random.getRandomX(),
@@ -77,7 +81,7 @@ var arrayAds = function () {
   }
 };
 
-var getCreateElement = function (publicity) {
+var getCreatePin = function (publicity) {
   var pinElement = pinTemplate.cloneNode(true);
   pinElement.style.left = publicity.location.x - 25 + 'px';
   pinElement.style.top = publicity.location.y - 70 + 'px';
@@ -87,12 +91,46 @@ var getCreateElement = function (publicity) {
   return pinElement;
 };
 
-var createPins = function () {
+var createPinFragment = function () {
   arrayAds();
   for (var j = 0; j < ads.length; j++) {
-    pinFragment.appendChild(getCreateElement(ads[j]));
+    pinFragment.appendChild(getCreatePin(ads[j]));
   }
 };
 
-createPins();
+var getCreateCard = function (publicity) {
+  var cardElement = cardTemplate.cloneNode(true);
+  var blcokPhotos = cardElement.querySelector('.popup__photos');
+  cardElement.querySelector('.popup__title').textContent = publicity.offer.title;
+  cardElement.querySelector('.popup__text--address').textContent = publicity.offer.address;
+  cardElement.querySelector('.popup__text--price').textContent = publicity.offer.price + '₽/ночь';
+  cardElement.querySelector('.popup__type').textContent = publicity.offer.type;
+  cardElement.querySelector('.popup__text--capacity').textContent = publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей';
+  cardElement.querySelector('.popup__text--time').textContent = 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout;
+  cardElement.querySelector('.popup__features').textContent = publicity.offer.features;
+  cardElement.querySelector('.popup__description').textContent = publicity.offer.description;
+  cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
+  for (var j = 0; j < publicity.offer.photos.length; j++) {
+    if (j === 0) {
+      var photo = blcokPhotos.querySelector('.popup__photo');
+      photo.src = publicity.offer.photos[0];
+    } else {
+      var newPhoto = photo.cloneNode();
+      newPhoto.src = publicity.offer.photos[j];
+      blcokPhotos.appendChild(newPhoto);
+    }
+  }
+
+  return cardElement;
+};
+
+var createCardFragment = function () {
+  for (var j = 0; j < ads.length; j++) {
+    cardFragment.appendChild(getCreateCard(ads[j]));
+  }
+};
+
+createPinFragment();
+createCardFragment();
 pinList.appendChild(pinFragment);
+map.insertBefore(cardFragment, adFilter);
