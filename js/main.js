@@ -3,8 +3,7 @@
 var map = document.querySelector('.map');
 map.classList.remove('map--faded');
 var MIN_PIN_Y = 130;
-var MAX_PIN_Y;
-var PIN_X;
+var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
 var ads = [];
 var pinFragment = document.createDocumentFragment();
@@ -32,13 +31,13 @@ var getRandomLengthArr = function (arr) {
 };
 
 var getRandomX = function () {
-  PIN_X = Math.floor(Math.random() * map.offsetWidth);
-  return PIN_X;
+  var pinX = Math.floor(Math.random() * map.offsetWidth);
+  return pinX;
 };
 
 var getRandomY = function () {
-  MAX_PIN_Y = Math.floor(Math.random() * 500) + MIN_PIN_Y;
-  return MAX_PIN_Y;
+  var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
+  return pinY;
 };
 
 var arrayAds = function () {
