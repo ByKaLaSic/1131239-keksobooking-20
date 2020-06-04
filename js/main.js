@@ -45,17 +45,21 @@ var getArrayAds = function () {
   }
 };
 
-var completionHTML = function () {
-  for (var j = 0; j < ads.length; j++) {
-    var pinElement = pinTemplate.cloneNode(true);
-    pinElement.style.left = ads[j].location.x + 50 + 'px';
-    pinElement.style.top = ads[j].location.y + 70 + 'px';
-    pinElement.children[0].src = ads[j].author.avatar;
-    pinElement.children[0].alt = ads[j].offer.title;
-    pinFragment.appendChild(pinElement);
-    pins.appendChild(pinFragment);
-  }
+var createElement = function (publicity) {
+  var pinElement = pinTemplate.cloneNode(true);
+
+  pinElement.style.left = publicity.location.x + 50 + 'px';
+  pinElement.style.top = publicity.location.y + 70 + 'px';
+  pinElement.children[0].src = publicity.author.avatar;
+  pinElement.children[0].alt = publicity.offer.title;
+
+  return pinElement;
 };
 
 getArrayAds();
-completionHTML();
+
+for (var j = 0; j < ads.length; j++) {
+  pinFragment.appendChild(createElement(ads[j]));
+}
+
+pins.appendChild(pinFragment);
