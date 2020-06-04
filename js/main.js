@@ -27,27 +27,26 @@ var pinList = document.querySelector('.map__pins');
 var map = document.querySelector('.map');
 map.classList.remove('map--faded');
 
-var getRandomLengthArr = function (arr) {
-  var arrlength = Math.floor(Math.random() * arr.length);
-  var newArr = [];
-  for (var k = 0; k < arrlength; k++) {
-    newArr.push(arr[k]);
+var random = {
+  getRandomLengthArr: function (arr) {
+    var arrlength = Math.floor(Math.random() * arr.length);
+    var newArr = [];
+    for (var k = 0; k < arrlength; k++) {
+      newArr.push(arr[k]);
+    }
+    return newArr;
+  },
+  getRandomLineArr: function (arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  },
+  getRandomX: function () {
+    var pinX = Math.floor(Math.random() * map.offsetWidth);
+    return pinX;
+  },
+  getRandomY: function () {
+    var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
+    return pinY;
   }
-  return newArr;
-};
-
-var getRandomLineArr = function (arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-};
-
-var getRandomX = function () {
-  var pinX = Math.floor(Math.random() * map.offsetWidth);
-  return pinX;
-};
-
-var getRandomY = function () {
-  var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
-  return pinY;
 };
 
 var arrayAds = function () {
@@ -60,18 +59,18 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 3000,
-        'type': getRandomLineArr(TYPE),
+        'type': random.getRandomLineArr(TYPE),
         'rooms': 5,
         'guests': 7,
-        'checkin': getRandomLineArr(TIMES),
-        'checkout': getRandomLineArr(TIMES),
-        'features': getRandomLengthArr(FEATURES),
+        'checkin': random.getRandomLineArr(TIMES),
+        'checkout': random.getRandomLineArr(TIMES),
+        'features': random.getRandomLengthArr(FEATURES),
         'description': 'Описание',
-        'photos': getRandomLengthArr(PHOTOS)
+        'photos': random.getRandomLengthArr(PHOTOS)
       },
       'location': {
-        'x': getRandomX(),
-        'y': getRandomY()
+        'x': random.getRandomX(),
+        'y': random.getRandomY()
       }
     };
     ads.push(ad);
