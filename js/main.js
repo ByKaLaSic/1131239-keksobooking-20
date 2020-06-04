@@ -5,6 +5,11 @@ map.classList.remove('map--faded');
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
+var TIMES = [
+  '12:00',
+  '13:00',
+  '14:00'
+];
 var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
@@ -31,7 +36,7 @@ var getRandomLengthArr = function (arr) {
   return newArr;
 };
 
-var getRandomType = function (arr) {
+var getRandomLineArr = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
@@ -55,11 +60,11 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 3000,
-        'type': getRandomType(type),
+        'type': getRandomLineArr(type),
         'rooms': 5,
         'guests': 7,
-        'checkin': Math.floor(Math.random() * 3) + 12 + ':00',
-        'checkout': Math.floor(Math.random() * 3) + 12 + ':00',
+        'checkin': getRandomLineArr(TIMES),
+        'checkout': getRandomLineArr(TIMES),
         'features': getRandomLengthArr(features),
         'description': 'Описание',
         'photos': getRandomLengthArr(photos)
