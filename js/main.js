@@ -87,10 +87,12 @@ var getCreateElement = function (publicity) {
   return pinElement;
 };
 
-arrayAds();
+var createPins = function () {
+  arrayAds();
+  for (var j = 0; j < ads.length; j++) {
+    pinFragment.appendChild(getCreateElement(ads[j]));
+  }
+};
 
-for (var j = 0; j < ads.length; j++) {
-  pinFragment.appendChild(getCreateElement(ads[j]));
-}
-
+createPins();
 pinList.appendChild(pinFragment);
