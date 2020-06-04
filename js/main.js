@@ -10,22 +10,22 @@ var TIMES = [
   '13:00',
   '14:00'
 ];
-var ads = [];
-var pinFragment = document.createDocumentFragment();
-var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
-var pinList = document.querySelector('.map__pins');
-var type = ['palace', 'flat', 'house', 'bungalo'];
-var photos = [
+var TYPE = ['palace', 'flat', 'house', 'bungalo'];
+var PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-var features = [
+var FEATURES = [
   'wifi',
   'dishwasher',
   'parking',
   'washer',
   'elevator',
   'conditioner'];
+var ads = [];
+var pinFragment = document.createDocumentFragment();
+var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
+var pinList = document.querySelector('.map__pins');
 
 var getRandomLengthArr = function (arr) {
   var arrlength = Math.floor(Math.random() * arr.length);
@@ -60,14 +60,14 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 3000,
-        'type': getRandomLineArr(type),
+        'type': getRandomLineArr(TYPE),
         'rooms': 5,
         'guests': 7,
         'checkin': getRandomLineArr(TIMES),
         'checkout': getRandomLineArr(TIMES),
-        'features': getRandomLengthArr(features),
+        'features': getRandomLengthArr(FEATURES),
         'description': 'Описание',
-        'photos': getRandomLengthArr(photos)
+        'photos': getRandomLengthArr(PHOTOS)
       },
       'location': {
         'x': getRandomX(),
