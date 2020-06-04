@@ -81,8 +81,8 @@ var getCreateElement = function (publicity) {
   var pinElement = pinTemplate.cloneNode(true);
   pinElement.style.left = publicity.location.x - 25 + 'px';
   pinElement.style.top = publicity.location.y - 70 + 'px';
-  pinElement.children[0].src = publicity.author.avatar;
-  pinElement.children[0].alt = publicity.offer.title;
+  pinElement.querySelector('img').src = publicity.author.avatar;
+  pinElement.querySelector('img').alt = publicity.offer.title;
 
   return pinElement;
 };
