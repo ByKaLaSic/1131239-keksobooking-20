@@ -101,13 +101,18 @@ var createPinFragment = function () {
 var getCreateCard = function (publicity) {
   var cardElement = cardTemplate.cloneNode(true);
   var blcokPhotos = cardElement.querySelector('.popup__photos');
+  var randomFeatures = random.getRandomLengthArr(FEATURES);
+  var popupFeaturesList = cardElement.querySelector('.popup__features');
+  var popupFeatures = cardElement.querySelectorAll('.popup__feature');
   cardElement.querySelector('.popup__title').textContent = publicity.offer.title;
   cardElement.querySelector('.popup__text--address').textContent = publicity.offer.address;
   cardElement.querySelector('.popup__text--price').textContent = publicity.offer.price + '₽/ночь';
   cardElement.querySelector('.popup__type').textContent = publicity.offer.type;
   cardElement.querySelector('.popup__text--capacity').textContent = publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей';
   cardElement.querySelector('.popup__text--time').textContent = 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout;
-  cardElement.querySelector('.popup__features').textContent = publicity.offer.features;
+  for (var i = FEATURES.length - 1; i >= randomFeatures.length; i--) {
+    popupFeaturesList.removeChild(popupFeatures[i]);
+  }
   cardElement.querySelector('.popup__description').textContent = publicity.offer.description;
   cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
   for (var j = 0; j < publicity.offer.photos.length; j++) {
