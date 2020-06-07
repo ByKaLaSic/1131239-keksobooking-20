@@ -33,7 +33,7 @@ map.classList.remove('map--faded');
 
 var random = {
   getRandomLengthArr: function (arr) {
-    var arrlength = Math.ceil(Math.random() * arr.length);
+    var arrlength = Math.round(Math.random() * arr.length);
     var newArr = [];
     for (var k = 0; k < arrlength; k++) {
       newArr.push(arr[k]);
