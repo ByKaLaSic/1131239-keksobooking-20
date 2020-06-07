@@ -83,8 +83,16 @@ var arrayAds = function () {
 
 var getCreatePin = function (publicity) {
   var pinElement = pinTemplate.cloneNode(true);
-  pinElement.style.left = publicity.location.x - 25 + 'px';
-  pinElement.style.top = publicity.location.y - 70 + 'px';
+  var pinWidth;
+  var pinHeight;
+  pinElement.classList.add('hidden');
+  pinList.appendChild(pinElement);
+  pinWidth = pinElement.offsetWidth;
+  pinHeight = pinElement.offsetHeight;
+  pinList.removeChild(pinElement);
+  pinElement.classList.remove('hidden');
+  pinElement.style.left = publicity.location.x - pinWidth + 'px';
+  pinElement.style.top = publicity.location.y - pinHeight + 'px';
   pinElement.querySelector('img').src = publicity.author.avatar;
   pinElement.querySelector('img').alt = publicity.offer.title;
 
