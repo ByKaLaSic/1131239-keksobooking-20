@@ -8,8 +8,18 @@ var TIMES = [
   '13:00',
   '14:00'
 ];
-// var TYPES = ['palace', 'flat', 'house', 'bungalo'];
-var TYPES_RUS = ['Дворец', 'Квартира', 'Дом', 'Бунгало'];
+var TYPES = [
+  'palace',
+  'flat',
+  'house',
+  'bungalo'
+];
+var HOUSES_TYPES = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  bungalo: 'Бунгало',
+  house: 'Дом'
+};
 var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
@@ -63,7 +73,7 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 7000,
-        'type': random.getRandomLineArr(TYPES_RUS),
+        'type': HOUSES_TYPES.random.getRandomLineArr(TYPES),
         'rooms': 3,
         'guests': 7,
         'checkin': random.getRandomLineArr(TIMES),
