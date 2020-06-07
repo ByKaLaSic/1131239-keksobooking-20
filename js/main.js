@@ -116,19 +116,22 @@ var getCreateCard = function (publicity) {
   var popupFeaturesList = cardElement.querySelector('.popup__features');
   var popupFeatures = cardElement.querySelectorAll('.popup__feature');
 
-  cardElement.querySelector('.popup__title').textContent = publicity.offer.title;
-  cardElement.querySelector('.popup__text--address').textContent = publicity.offer.address;
-  cardElement.querySelector('.popup__text--price').textContent = publicity.offer.price + '₽/ночь';
-  cardElement.querySelector('.popup__type').textContent = publicity.offer.type;
-  cardElement.querySelector('.popup__text--capacity').textContent = publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей';
-  cardElement.querySelector('.popup__text--time').textContent = 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout;
+  var makeTextElement = function (className, text) {
+    cardElement.querySelector(className).textContent = text;
+  };
+
+  makeTextElement('.popup__title', publicity.offer.title);
+  makeTextElement('.popup__text--address', publicity.offer.address);
+  makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
+  makeTextElement('.popup__type', publicity.offer.type);
+  makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
+  makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
+  makeTextElement('.popup__description', publicity.offer.description);
+  cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
   for (var i = FEATURES.length - 1; i >= randomFeatures.length; i--) {
     popupFeaturesList.removeChild(popupFeatures[i]);
   }
-
-  cardElement.querySelector('.popup__description').textContent = publicity.offer.description;
-  cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
   for (var j = 0; j < publicity.offer.photos.length; j++) {
     if (j === 0) {
