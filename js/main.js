@@ -53,7 +53,7 @@ for (i = 0; i < fieldsetAdForm.length; i++) {
   fieldsetAdForm[i].setAttribute('disabled', 'true');
 }
 
-mainPin.addEventListener('mousedown', function () {
+var activeState = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
   pinList.appendChild(pinFragment);
@@ -65,6 +65,16 @@ mainPin.addEventListener('mousedown', function () {
   for (i = 0; i < filterFormChildren.length; i++) {
     filterFormChildren[i].removeAttribute('disabled');
   }
+};
+
+mainPin.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 13) {
+    activeState();
+  }
+});
+
+mainPin.addEventListener('mousedown', function () {
+  activeState();
 });
 
 var random = {
