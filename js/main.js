@@ -73,7 +73,7 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 7000,
-        'type': HOUSES_TYPES.random.getRandomLineArr(TYPES),
+        'type': HOUSES_TYPES[random.getRandomLineArr(TYPES)],
         'rooms': 3,
         'guests': 7,
         'checkin': random.getRandomLineArr(TIMES),
