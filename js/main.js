@@ -37,9 +37,25 @@ var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pi
 var pinList = document.querySelector('.map__pins');
 var cardFragment = document.createDocumentFragment();
 var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
-var adFilter = document.querySelector('.map__filters-container');
+// var adFilter = document.querySelector('.map__filters-container');
 var map = document.querySelector('.map');
-map.classList.remove('map--faded');
+var adForm = document.querySelector('.ad-form');
+var fieldsetAdForm = adForm.querySelectorAll('fieldset');
+var mainPin = document.querySelector('.map__pin--main');
+
+for (var i = 0; i < fieldsetAdForm.length; i++) {
+  fieldsetAdForm[i].setAttribute('disabled', 'true');
+}
+
+mainPin.addEventListener('mousedown', function () {
+  map.classList.remove('map--faded');
+  adForm.classList.remove('ad-form--disabled');
+  pinList.appendChild(pinFragment);
+
+  for (var k = 0; k < fieldsetAdForm.length; k++) {
+    fieldsetAdForm[k].removeAttribute('disabled');
+  }
+});
 
 var random = {
   getRandomLengthArr: function (arr) {
@@ -64,10 +80,10 @@ var random = {
 };
 
 var arrayAds = function () {
-  for (var i = 1; i <= QUANTITY_ADS; i++) {
+  for (var j = 1; j <= QUANTITY_ADS; j++) {
     var ad = {
       'author': {
-        'avatar': 'img/avatars/user' + ('0' + i) + '.png'
+        'avatar': 'img/avatars/user' + ('0' + j) + '.png'
       },
       'offer': {
         'title': 'Заголовок',
@@ -165,5 +181,4 @@ var createCardFragment = function () {
 
 createPinFragment();
 createCardFragment();
-pinList.appendChild(pinFragment);
-map.insertBefore(cardFragment, adFilter);
+// map.insertBefore(cardFragment, adFilter);
