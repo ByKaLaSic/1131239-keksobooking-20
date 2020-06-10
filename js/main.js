@@ -110,17 +110,17 @@ var arrayAds = function () {
 var getCreatePin = function (publicity) {
 
   var pinElement = pinTemplate.cloneNode(true);
-  var pinWidth;
-  var pinHeight;
+  // var pinWidth;
+  // var pinHeight;
 
   pinElement.classList.add('hidden');
   pinList.appendChild(pinElement);
-  pinWidth = pinElement.offsetWidth;
-  pinHeight = pinElement.offsetHeight;
+  // pinWidth = pinElement.offsetWidth / 2;
+  // pinHeight = pinElement.offsetHeight;
   pinList.removeChild(pinElement);
   pinElement.classList.remove('hidden');
-  pinElement.style.left = publicity.location.x - pinWidth + 'px';
-  pinElement.style.top = publicity.location.y - pinHeight + 'px';
+  pinElement.style.left = publicity.location.x - 25 + 'px';
+  pinElement.style.top = publicity.location.y - 70 + 'px';
   pinElement.querySelector('img').src = publicity.author.avatar;
   pinElement.querySelector('img').alt = publicity.offer.title;
 
@@ -155,8 +155,8 @@ var getCreateCard = function (publicity) {
   makeTextElement('.popup__description', publicity.offer.description);
   cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-  for (var i = FEATURES.length - 1; i >= randomFeatures.length; i--) {
-    popupFeaturesList.removeChild(popupFeatures[i]);
+  for (var t = FEATURES.length - 1; t >= randomFeatures.length; t--) {
+    popupFeaturesList.removeChild(popupFeatures[t]);
   }
 
   for (var j = 0; j < publicity.offer.photos.length; j++) {
