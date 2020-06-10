@@ -37,13 +37,19 @@ var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pi
 var pinList = document.querySelector('.map__pins');
 var cardFragment = document.createDocumentFragment();
 var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
-// var adFilter = document.querySelector('.map__filters-container');
+// var adFilter = document.querySelector('.map__filters-container'); 2 задание
 var map = document.querySelector('.map');
 var adForm = document.querySelector('.ad-form');
 var fieldsetAdForm = adForm.querySelectorAll('fieldset');
+var filterForm = document.querySelector('.map__filters');
+var filterFormChildren = filterForm.children;
 var mainPin = document.querySelector('.map__pin--main');
 
-for (var i = 0; i < fieldsetAdForm.length; i++) {
+for (var i = 0; i < filterFormChildren.length; i++) {
+  filterFormChildren[i].setAttribute('disabled', 'true');
+}
+
+for (i = 0; i < fieldsetAdForm.length; i++) {
   fieldsetAdForm[i].setAttribute('disabled', 'true');
 }
 
@@ -52,8 +58,12 @@ mainPin.addEventListener('mousedown', function () {
   adForm.classList.remove('ad-form--disabled');
   pinList.appendChild(pinFragment);
 
-  for (var k = 0; k < fieldsetAdForm.length; k++) {
-    fieldsetAdForm[k].removeAttribute('disabled');
+  for (i = 0; i < fieldsetAdForm.length; i++) {
+    fieldsetAdForm[i].removeAttribute('disabled');
+  }
+
+  for (i = 0; i < filterFormChildren.length; i++) {
+    filterFormChildren[i].removeAttribute('disabled');
   }
 });
 
@@ -61,8 +71,8 @@ var random = {
   getRandomLengthArr: function (arr) {
     var arrlength = Math.round(Math.random() * arr.length);
     var newArr = [];
-    for (var k = 0; k < arrlength; k++) {
-      newArr.push(arr[k]);
+    for (i = 0; i < arrlength; i++) {
+      newArr.push(arr[i]);
     }
     return newArr;
   },
@@ -129,8 +139,8 @@ var getCreatePin = function (publicity) {
 
 var createPinFragment = function () {
   arrayAds();
-  for (var j = 0; j < ads.length; j++) {
-    pinFragment.appendChild(getCreatePin(ads[j]));
+  for (i = 0; i < ads.length; i++) {
+    pinFragment.appendChild(getCreatePin(ads[i]));
   }
 };
 
@@ -155,17 +165,17 @@ var getCreateCard = function (publicity) {
   makeTextElement('.popup__description', publicity.offer.description);
   cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-  for (var t = FEATURES.length - 1; t >= randomFeatures.length; t--) {
-    popupFeaturesList.removeChild(popupFeatures[t]);
+  for (i = FEATURES.length - 1; i >= randomFeatures.length; i--) {
+    popupFeaturesList.removeChild(popupFeatures[i]);
   }
 
-  for (var j = 0; j < publicity.offer.photos.length; j++) {
-    if (j === 0) {
+  for (i = 0; i < publicity.offer.photos.length; i++) {
+    if (i === 0) {
       var photo = blcokPhotos.querySelector('.popup__photo');
       photo.src = publicity.offer.photos[0];
     } else {
       var newPhoto = photo.cloneNode();
-      newPhoto.src = publicity.offer.photos[j];
+      newPhoto.src = publicity.offer.photos[i];
       blcokPhotos.appendChild(newPhoto);
     }
   }
@@ -181,4 +191,4 @@ var createCardFragment = function () {
 
 createPinFragment();
 createCardFragment();
-// map.insertBefore(cardFragment, adFilter);
+// map.insertBefore(cardFragment, adFilter); 2 задание
