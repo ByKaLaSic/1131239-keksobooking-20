@@ -31,6 +31,7 @@ var FEATURES = [
   'washer',
   'elevator',
   'conditioner'];
+var ANGLE_HEIGHT_MAIN_PIN = 15;
 var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
@@ -44,6 +45,8 @@ var fieldsetAdForm = adForm.querySelectorAll('fieldset');
 var filterForm = document.querySelector('.map__filters');
 var filterFormChildren = filterForm.children;
 var mainPin = document.querySelector('.map__pin--main');
+var address = document.querySelector('#address');
+address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight / 2);
 
 for (var i = 0; i < filterFormChildren.length; i++) {
   filterFormChildren[i].setAttribute('disabled', 'true');
@@ -57,6 +60,7 @@ var activeState = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
   pinList.appendChild(pinFragment);
+  address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
 
   for (i = 0; i < fieldsetAdForm.length; i++) {
     fieldsetAdForm[i].removeAttribute('disabled');
