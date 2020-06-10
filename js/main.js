@@ -73,8 +73,10 @@ mainPin.addEventListener('keydown', function (evt) {
   }
 });
 
-mainPin.addEventListener('mousedown', function () {
-  activeState();
+mainPin.addEventListener('mousedown', function (evt) {
+  if (evt.button === 0) {
+    activeState();
+  }
 });
 
 var random = {
