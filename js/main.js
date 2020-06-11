@@ -90,7 +90,7 @@ var activeState = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
   pinList.appendChild(pinFragment);
-  address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
+  address.value = mainPin.offsetWidth - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
 
   for (i = 0; i < fieldsetAdForm.length; i++) {
     fieldsetAdForm[i].removeAttribute('disabled');
@@ -187,13 +187,14 @@ var createPinFragment = function () {
   }
 };
 
-var getCreateCard = function (publicity) {
+var getCreateCard = function (publicity, NumberArr) {
 
   var cardElement = cardTemplate.cloneNode(true);
   var blcokPhotos = cardElement.querySelector('.popup__photos');
   var randomFeatures = random.getRandomLengthArr(FEATURES);
   var popupFeaturesList = cardElement.querySelector('.popup__features');
   var popupFeatures = cardElement.querySelectorAll('.popup__feature');
+  var popupClose = cardElement.querySelector('.popup__close');
 
   var makeTextElement = function (className, text) {
     cardElement.querySelector(className).textContent = text;
@@ -226,12 +227,16 @@ var getCreateCard = function (publicity) {
   cardElement.classList.add('hidden');
   cards.push(cardElement);
 
+  popupClose.addEventListener('click', function () {
+    cards[NumberArr].classList.add('hidden');
+  });
+
   return cardElement;
 };
 
 var createCardFragment = function () {
   for (var j = 0; j < ads.length; j++) {
-    cardFragment.appendChild(getCreateCard(ads[j]));
+    cardFragment.appendChild(getCreateCard(ads[j], j));
   }
 };
 
