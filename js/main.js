@@ -45,31 +45,33 @@ var fieldsetAdForm = adForm.querySelectorAll('fieldset');
 var filterForm = document.querySelector('.map__filters');
 var filterFormChildren = filterForm.children;
 var mainPin = document.querySelector('.map__pin--main');
-// var roomNumber = document.querySelector('#room_number');
-// var capacity = document.querySelector('#capacity');
+var roomNumber = document.querySelector('#room_number');
+var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
 address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight / 2);
 
-// var SelectValue = {
-//   1: 3,
-//   2: 2,
-//   3: 1,
-//   100: 0
-// };
+var SelectValidation = {
+  1: '1',
+  2: '1, 2',
+  3: '1, 2, 3',
+  100: '0',
+  setCustomValidity: function () {
+    capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
+  }
+};
+var comparison = function () {
+  if (SelectValidation[roomNumber.value].indexOf(capacity.value) === -1) {
+    SelectValidation.setCustomValidity();
+  }
+};
 
-// var comparison = function () {
-//   if () {
+roomNumber.addEventListener('change', function () {
+  comparison();
+});
 
-//   }
-// };
-
-// roomNumber.addEventListener('change', function () {
-//   comparison();
-// });
-
-// capacity.addEventListener('change', function () {
-//   comparison();
-// });
+capacity.addEventListener('change', function () {
+  comparison();
+});
 
 for (var i = 0; i < filterFormChildren.length; i++) {
   filterFormChildren[i].setAttribute('disabled', 'true');
