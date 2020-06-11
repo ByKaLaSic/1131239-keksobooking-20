@@ -163,6 +163,13 @@ var arrayAds = function () {
   }
 };
 
+var onPopupEscPress = function (evt) {
+  if (evt.key === 'Escape') {
+    evt.preventDefault();
+    // closePopup();
+  }
+};
+
 var getCreatePin = function (publicity, NumberArr) {
 
   var pinElement = pinTemplate.cloneNode(true);
@@ -171,11 +178,16 @@ var getCreatePin = function (publicity, NumberArr) {
   pinElement.querySelector('img').src = publicity.author.avatar;
   pinElement.querySelector('img').alt = publicity.offer.title;
 
-  pinElement.addEventListener('click', function () {
+  var openPopup = function () {
     for (i = 0; i < cards.length; i++) {
       cards[i].classList.add('hidden');
     }
     cards[NumberArr].classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
+  };
+
+  pinElement.addEventListener('click', function () {
+    openPopup();
   });
 
   return pinElement;
@@ -227,8 +239,13 @@ var getCreateCard = function (publicity, NumberArr) {
   cardElement.classList.add('hidden');
   cards.push(cardElement);
 
-  popupClose.addEventListener('click', function () {
+  var closePopup = function () {
     cards[NumberArr].classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
+  };
+
+  popupClose.addEventListener('click', function () {
+    closePopup();
   });
 
   return cardElement;
