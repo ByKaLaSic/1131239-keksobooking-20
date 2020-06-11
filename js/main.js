@@ -32,6 +32,8 @@ var FEATURES = [
   'elevator',
   'conditioner'];
 var ANGLE_HEIGHT_MAIN_PIN = 15;
+var PIN_WIDTH = 50;
+var PIN_HEIGHT = 70;
 var ads = [];
 var pinFragment = document.createDocumentFragment();
 var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
@@ -48,8 +50,6 @@ var mainPin = document.querySelector('.map__pin--main');
 var roomNumber = document.querySelector('#room_number');
 var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
-var pinWidth = 50;
-var pinHeight = 70;
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
@@ -170,8 +170,8 @@ var getCreatePin = function (publicity) {
   pinList.appendChild(pinElement);
   pinList.removeChild(pinElement);
   pinElement.classList.remove('hidden');
-  pinElement.style.left = publicity.location.x - pinWidth / 2 + 'px';
-  pinElement.style.top = publicity.location.y - pinHeight + 'px';
+  pinElement.style.left = publicity.location.x - PIN_WIDTH / 2 + 'px';
+  pinElement.style.top = publicity.location.y - PIN_HEIGHT + 'px';
   pinElement.querySelector('img').src = publicity.author.avatar;
   pinElement.querySelector('img').alt = publicity.offer.title;
 
