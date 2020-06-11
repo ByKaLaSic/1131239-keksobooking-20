@@ -54,13 +54,13 @@ var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
-var SelectValidation = {
+var SelectGuestsValidation = {
   1: '1',
   2: '1, 2',
   3: '1, 2, 3',
   100: '0',
   setCustomValidity: function () {
-    if (SelectValidation[roomNumber.value].indexOf(capacity.value) === -1) {
+    if (this[roomNumber.value].indexOf(capacity.value) === -1) {
       capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
     } else {
       capacity.setCustomValidity('');
@@ -68,14 +68,14 @@ var SelectValidation = {
   }
 };
 
-SelectValidation.setCustomValidity();
+SelectGuestsValidation.setCustomValidity();
 
 roomNumber.addEventListener('change', function () {
-  SelectValidation.setCustomValidity();
+  SelectGuestsValidation.setCustomValidity();
 });
 
 capacity.addEventListener('change', function () {
-  SelectValidation.setCustomValidity();
+  SelectGuestsValidation.setCustomValidity();
 });
 
 for (var i = 0; i < filterFormChildren.length; i++) {
