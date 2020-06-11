@@ -48,6 +48,7 @@ var mainPin = document.querySelector('.map__pin--main');
 var roomNumber = document.querySelector('#room_number');
 var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
+address.setAttribute('disabled', 'true');
 address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight / 2);
 
 var SelectValidation = {
