@@ -40,7 +40,7 @@ var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pi
 var pinList = document.querySelector('.map__pins');
 var cardFragment = document.createDocumentFragment();
 var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
-// var adFilter = document.querySelector('.map__filters-container'); 2 задание
+var adFilter = document.querySelector('.map__filters-container');
 var map = document.querySelector('.map');
 var adForm = document.querySelector('.ad-form');
 var fieldsetAdForm = adForm.querySelectorAll('fieldset');
@@ -165,11 +165,6 @@ var arrayAds = function () {
 var getCreatePin = function (publicity) {
 
   var pinElement = pinTemplate.cloneNode(true);
-
-  pinElement.classList.add('hidden');
-  pinList.appendChild(pinElement);
-  pinList.removeChild(pinElement);
-  pinElement.classList.remove('hidden');
   pinElement.style.left = publicity.location.x - PIN_WIDTH / 2 + 'px';
   pinElement.style.top = publicity.location.y - PIN_HEIGHT + 'px';
   pinElement.querySelector('img').src = publicity.author.avatar;
@@ -232,4 +227,4 @@ var createCardFragment = function () {
 
 createPinFragment();
 createCardFragment();
-// map.insertBefore(cardFragment, adFilter); 2 задание
+map.insertBefore(cardFragment, adFilter);
