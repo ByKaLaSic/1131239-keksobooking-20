@@ -56,21 +56,22 @@ var SelectValidation = {
   3: '1, 2, 3',
   100: '0',
   setCustomValidity: function () {
-    capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
-  }
-};
-var comparison = function () {
-  if (SelectValidation[roomNumber.value].indexOf(capacity.value) === -1) {
-    SelectValidation.setCustomValidity();
+    if (SelectValidation[roomNumber.value].indexOf(capacity.value) === -1) {
+      capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
+    } else {
+      capacity.setCustomValidity('');
+    }
   }
 };
 
+SelectValidation.setCustomValidity();
+
 roomNumber.addEventListener('change', function () {
-  comparison();
+  SelectValidation.setCustomValidity();
 });
 
 capacity.addEventListener('change', function () {
-  comparison();
+  SelectValidation.setCustomValidity();
 });
 
 for (var i = 0; i < filterFormChildren.length; i++) {
