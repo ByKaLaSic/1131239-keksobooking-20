@@ -49,7 +49,7 @@ var roomNumber = document.querySelector('#room_number');
 var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
-address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight / 2);
+address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
 var SelectValidation = {
   1: '1',
