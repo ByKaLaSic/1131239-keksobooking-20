@@ -45,8 +45,31 @@ var fieldsetAdForm = adForm.querySelectorAll('fieldset');
 var filterForm = document.querySelector('.map__filters');
 var filterFormChildren = filterForm.children;
 var mainPin = document.querySelector('.map__pin--main');
+// var roomNumber = document.querySelector('#room_number');
+// var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
 address.value = 570 - mainPin.offsetWidth / 2 + ', ' + (375 - mainPin.offsetHeight / 2);
+
+// var SelectValue = {
+//   1: 3,
+//   2: 2,
+//   3: 1,
+//   100: 0
+// };
+
+// var comparison = function () {
+//   if () {
+
+//   }
+// };
+
+// roomNumber.addEventListener('change', function () {
+//   comparison();
+// });
+
+// capacity.addEventListener('change', function () {
+//   comparison();
+// });
 
 for (var i = 0; i < filterFormChildren.length; i++) {
   filterFormChildren[i].setAttribute('disabled', 'true');
@@ -92,7 +115,7 @@ var random = {
     }
     return newArr;
   },
-  getRandomLineArr: function (arr) {
+  getRandomElementFormArray: function (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   },
   getRandomX: function () {
@@ -115,11 +138,11 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 7000,
-        'type': HOUSES_TYPES[random.getRandomLineArr(TYPES)],
+        'type': HOUSES_TYPES[random.getRandomElementFormArray(TYPES)],
         'rooms': 3,
         'guests': 7,
-        'checkin': random.getRandomLineArr(TIMES),
-        'checkout': random.getRandomLineArr(TIMES),
+        'checkin': random.getRandomElementFormArray(TIMES),
+        'checkout': random.getRandomElementFormArray(TIMES),
         'features': random.getRandomLengthArr(FEATURES),
         'description': 'Описание',
         'photos': random.getRandomLengthArr(photos)
