@@ -48,6 +48,8 @@ var mainPin = document.querySelector('.map__pin--main');
 var roomNumber = document.querySelector('#room_number');
 var capacity = document.querySelector('#capacity');
 var address = document.querySelector('#address');
+var pinWidth = 50;
+var pinHeight = 70;
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
@@ -163,17 +165,13 @@ var arrayAds = function () {
 var getCreatePin = function (publicity) {
 
   var pinElement = pinTemplate.cloneNode(true);
-  // var pinWidth;
-  // var pinHeight;
 
   pinElement.classList.add('hidden');
   pinList.appendChild(pinElement);
-  // pinWidth = pinElement.offsetWidth / 2;
-  // pinHeight = pinElement.offsetHeight;
   pinList.removeChild(pinElement);
   pinElement.classList.remove('hidden');
-  pinElement.style.left = publicity.location.x - 25 + 'px';
-  pinElement.style.top = publicity.location.y - 70 + 'px';
+  pinElement.style.left = publicity.location.x - pinWidth / 2 + 'px';
+  pinElement.style.top = publicity.location.y - pinHeight + 'px';
   pinElement.querySelector('img').src = publicity.author.avatar;
   pinElement.querySelector('img').alt = publicity.offer.title;
 
