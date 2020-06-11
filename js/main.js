@@ -82,13 +82,13 @@ capacity.addEventListener('change', function () {
   SelectGuestsValidation.setCustomValidity();
 });
 
-var SelectPriceValidation = {
+var selectPriceValidation = {
   'Бунгало': '0',
   'Квартира': '1000',
   'Дом': '5000',
   'Дворец': '10000',
   'setCustomValidity': function () {
-    if (this[HOUSES_TYPES[type.value]].indexOf(price.value) === -1) {
+    if (this[HOUSES_TYPES[type.value]] > price.value) {
       price.setCustomValidity('Маленькая стоимость');
     } else {
       price.setCustomValidity('');
@@ -97,15 +97,15 @@ var SelectPriceValidation = {
 };
 
 price.addEventListener('change', function () {
-  SelectPriceValidation.setCustomValidity();
+  selectPriceValidation.setCustomValidity();
   if (price.value > 1000000) {
     price.setCustomValidity('Цена должна быть не больше 1000000');
   }
 });
 
 type.addEventListener('change', function () {
-  SelectPriceValidation.setCustomValidity();
-  price.placeholder = SelectPriceValidation[HOUSES_TYPES[type.value]];
+  selectPriceValidation.setCustomValidity();
+  price.placeholder = selectPriceValidation[HOUSES_TYPES[type.value]];
 });
 
 timein.addEventListener('change', function () {
