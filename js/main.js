@@ -105,6 +105,7 @@ price.addEventListener('change', function () {
 
 type.addEventListener('change', function () {
   SelectPriceValidation.setCustomValidity();
+  price.placeholder = SelectPriceValidation[HOUSES_TYPES[type.value]];
 });
 
 timein.addEventListener('change', function () {
