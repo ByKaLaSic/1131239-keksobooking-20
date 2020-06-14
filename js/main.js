@@ -65,6 +65,18 @@ var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
+var leftButtonPressed = function (evt) {
+  return evt.button === MouseKeys.leftButton;
+};
+
+var isEscPressed = function (evt) {
+  return evt.keyCode === Keys.esc;
+};
+
+var isEnterPressed = function (evt) {
+  return evt.keyCode === Keys.enter;
+};
+
 var SelectGuestsValidation = {
   1: '1',
   2: '1, 2',
@@ -145,18 +157,6 @@ var activeState = function () {
   for (i = 0; i < filterFormChildren.length; i++) {
     filterFormChildren[i].removeAttribute('disabled');
   }
-};
-
-var leftButtonPressed = function (evt) {
-  return evt.button === MouseKeys.leftButton;
-};
-
-var isEscPressed = function (evt) {
-  return evt.keyCode === Keys.esc;
-};
-
-var isEnterPressed = function (evt) {
-  return evt.keyCode === Keys.enter;
 };
 
 mainPin.addEventListener('keydown', function (evt) {
