@@ -3,6 +3,13 @@
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
+var KEYS = {
+  enter: 13,
+  esc: 27
+};
+var MOUSE_KEYS = {
+  leftButton: 0
+};
 var TIMES = [
   '12:00',
   '13:00',
@@ -90,15 +97,16 @@ var selectPriceValidation = {
   'setCustomValidity': function () {
     if (this[HOUSES_TYPES[type.value]] > price.value) {
       price.setCustomValidity('Маленькая стоимость');
-    } else {
-      price.setCustomValidity('');
+      return;
     }
+    price.setCustomValidity('');
   }
 };
 
 price.addEventListener('change', function () {
   selectPriceValidation.setCustomValidity();
-  if (price.value > 1000000) {
+  var maxPrice = 1000000;
+  if (price.value > maxPrice) {
     price.setCustomValidity('Цена должна быть не больше 1000000');
   }
 });
@@ -139,14 +147,26 @@ var activeState = function () {
   }
 };
 
+var leftButtonPressed = function (evt) {
+  return evt.button === MOUSE_KEYS.leftButton;
+};
+
+var isEscPressed = function (evt) {
+  return evt.keyCode === KEYS.esc;
+};
+
+var isEnterPressed = function (evt) {
+  return evt.keyCode === KEYS.enter;
+};
+
 mainPin.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (isEnterPressed(evt)) {
     activeState();
   }
 });
 
 mainPin.addEventListener('mousedown', function (evt) {
-  if (evt.button === 0) {
+  if (leftButtonPressed(evt)) {
     activeState();
   }
 });
@@ -177,7 +197,7 @@ var arrayAds = function () {
   for (var j = 1; j <= QUANTITY_ADS; j++) {
     var ad = {
       'author': {
-        'avatar': 'img/avatars/user' + ('0' + j) + '.png'
+        'avatar': 'img/avatars/user0' + j + '.png'
       },
       'offer': {
         'title': 'Заголовок',
