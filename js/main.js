@@ -151,9 +151,9 @@ var leftButtonPressed = function (evt) {
   return evt.button === MOUSE_KEYS.leftButton;
 };
 
-var isEscPressed = function (evt) {
-  return evt.keyCode === KEYS.esc;
-};
+// var isEscPressed = function (evt) {
+//   return evt.keyCode === KEYS.esc;
+// };
 
 var isEnterPressed = function (evt) {
   return evt.keyCode === KEYS.enter;
@@ -241,6 +241,7 @@ var getCreatePin = function (publicity, NumberArr) {
       cards[i].classList.add('hidden');
     }
     cards[NumberArr].classList.remove('hidden');
+    map.insertBefore(cards[NumberArr], adFilter);
     document.addEventListener('keydown', onPopupEscPress);
   };
 
@@ -294,7 +295,6 @@ var getCreateCard = function (publicity, NumberArr) {
     }
   }
 
-  cardElement.classList.add('hidden');
   cards.push(cardElement);
 
   var closePopup = function () {
@@ -315,10 +315,6 @@ var createCardFragment = function () {
   }
 };
 
-// pinList.addEventListener('click', function (evt) {
-// });
-
 arrayAds();
 createPinFragment();
 createCardFragment();
-map.insertBefore(cardFragment, adFilter);
