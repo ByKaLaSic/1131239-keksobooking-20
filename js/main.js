@@ -222,7 +222,7 @@ var arrayAds = function () {
 };
 
 var onPopupEscPress = function (evt) {
-  if (Keys.enter) {
+  if (Keys.esc) {
     evt.preventDefault();
     // closePopup();
   }
