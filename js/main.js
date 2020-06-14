@@ -3,25 +3,25 @@
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
-var KEYS = {
+var Keys = {
   enter: 13,
   esc: 27
 };
-var MOUSE_KEYS = {
+var MouseKeys = {
   leftButton: 0
 };
-var TIMES = [
+var Times = [
   '12:00',
   '13:00',
   '14:00'
 ];
-var TYPES = [
+var Types = [
   'palace',
   'flat',
   'house',
   'bungalo'
 ];
-var HOUSES_TYPES = {
+var HousesTypes = {
   palace: 'Дворец',
   flat: 'Квартира',
   bungalo: 'Бунгало',
@@ -31,7 +31,7 @@ var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-var FEATURES = [
+var Features = [
   'wifi',
   'dishwasher',
   'parking',
@@ -95,7 +95,7 @@ var selectPriceValidation = {
   'Дом': '5000',
   'Дворец': '10000',
   'setCustomValidity': function () {
-    if (this[HOUSES_TYPES[type.value]] > price.value) {
+    if (this[HousesTypes[type.value]] > price.value) {
       price.setCustomValidity('Маленькая стоимость');
       return;
     }
@@ -113,7 +113,7 @@ price.addEventListener('change', function () {
 
 type.addEventListener('change', function () {
   selectPriceValidation.setCustomValidity();
-  price.placeholder = selectPriceValidation[HOUSES_TYPES[type.value]];
+  price.placeholder = selectPriceValidation[HousesTypes[type.value]];
 });
 
 timein.addEventListener('change', function () {
@@ -148,15 +148,15 @@ var activeState = function () {
 };
 
 var leftButtonPressed = function (evt) {
-  return evt.button === MOUSE_KEYS.leftButton;
+  return evt.button === MouseKeys.leftButton;
 };
 
 // var isEscPressed = function (evt) {
-//   return evt.keyCode === KEYS.esc;
+//   return evt.keyCode === Keys.esc;
 // };
 
 var isEnterPressed = function (evt) {
-  return evt.keyCode === KEYS.enter;
+  return evt.keyCode === Keys.enter;
 };
 
 mainPin.addEventListener('keydown', function (evt) {
@@ -203,12 +203,12 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 7000,
-        'type': HOUSES_TYPES[random.getRandomElementFormArray(TYPES)],
+        'type': HousesTypes[random.getRandomElementFormArray(Types)],
         'rooms': 3,
         'guests': 7,
-        'checkin': random.getRandomElementFormArray(TIMES),
-        'checkout': random.getRandomElementFormArray(TIMES),
-        'features': random.getRandomLengthArr(FEATURES),
+        'checkin': random.getRandomElementFormArray(Times),
+        'checkout': random.getRandomElementFormArray(Times),
+        'features': random.getRandomLengthArr(Features),
         'description': 'Описание',
         'photos': random.getRandomLengthArr(photos)
       },
@@ -262,7 +262,7 @@ var getCreateCard = function (publicity, NumberArr) {
 
   var cardElement = cardTemplate.cloneNode(true);
   var blcokPhotos = cardElement.querySelector('.popup__photos');
-  var randomFeatures = random.getRandomLengthArr(FEATURES);
+  var randomFeatures = random.getRandomLengthArr(Features);
   var popupFeaturesList = cardElement.querySelector('.popup__features');
   var popupFeatures = cardElement.querySelectorAll('.popup__feature');
   var popupClose = cardElement.querySelector('.popup__close');
@@ -280,7 +280,7 @@ var getCreateCard = function (publicity, NumberArr) {
   makeTextElement('.popup__description', publicity.offer.description);
   cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-  for (i = FEATURES.length - 1; i >= randomFeatures.length; i--) {
+  for (i = Features.length - 1; i >= randomFeatures.length; i--) {
     popupFeaturesList.removeChild(popupFeatures[i]);
   }
 
