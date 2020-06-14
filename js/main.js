@@ -151,9 +151,9 @@ var leftButtonPressed = function (evt) {
   return evt.button === MouseKeys.leftButton;
 };
 
-// var isEscPressed = function (evt) {
-//   return evt.keyCode === Keys.esc;
-// };
+var isEscPressed = function (evt) {
+  return evt.keyCode === Keys.esc;
+};
 
 var isEnterPressed = function (evt) {
   return evt.keyCode === Keys.enter;
@@ -222,7 +222,7 @@ var arrayAds = function () {
 };
 
 var onPopupEscPress = function (evt) {
-  if (Keys.esc) {
+  if (isEscPressed(evt)) {
     evt.preventDefault();
     // closePopup();
   }
