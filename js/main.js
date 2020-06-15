@@ -177,27 +177,31 @@ mainPin.addEventListener('mousedown', function (evt) {
   }
 });
 
-var random = {
-  getRandomLengthArr: function (arr) {
-    var arrlength = Math.round(Math.random() * arr.length);
-    var newArr = [];
-    for (var i = 0; i < arrlength; i++) {
-      newArr.push(arr[i]);
+(function () {
+  window.data = {
+    random: {
+      getRandomLengthArr: function (arr) {
+        var arrlength = Math.round(Math.random() * arr.length);
+        var newArr = [];
+        for (var i = 0; i < arrlength; i++) {
+          newArr.push(arr[i]);
+        }
+        return newArr;
+      },
+      getRandomElementFormArray: function (arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      },
+      getRandomX: function () {
+        var pinX = Math.floor(Math.random() * map.offsetWidth);
+        return pinX;
+      },
+      getRandomY: function () {
+        var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
+        return pinY;
+      }
     }
-    return newArr;
-  },
-  getRandomElementFormArray: function (arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  },
-  getRandomX: function () {
-    var pinX = Math.floor(Math.random() * map.offsetWidth);
-    return pinX;
-  },
-  getRandomY: function () {
-    var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
-    return pinY;
-  }
-};
+  };
+})();
 
 var arrayAds = function () {
   for (var j = 1; j <= QUANTITY_ADS; j++) {
@@ -209,18 +213,18 @@ var arrayAds = function () {
         'title': 'Заголовок',
         'address': '600, 350',
         'price': 7000,
-        'type': HousesTypes[random.getRandomElementFormArray(Types)],
+        'type': HousesTypes[window.data.random.getRandomElementFormArray(Types)],
         'rooms': 3,
         'guests': 7,
-        'checkin': random.getRandomElementFormArray(Times),
-        'checkout': random.getRandomElementFormArray(Times),
-        'features': random.getRandomLengthArr(Features),
+        'checkin': window.data.random.getRandomElementFormArray(Times),
+        'checkout': window.data.random.getRandomElementFormArray(Times),
+        'features': window.data.random.getRandomLengthArr(Features),
         'description': 'Описание',
-        'photos': random.getRandomLengthArr(photos)
+        'photos': window.data.random.getRandomLengthArr(photos)
       },
       'location': {
-        'x': random.getRandomX(),
-        'y': random.getRandomY()
+        'x': window.data.random.getRandomX(),
+        'y': window.data.random.getRandomY()
       }
     };
     ads.push(ad);
@@ -267,7 +271,7 @@ var onPopupEscPress = function (evt) {
     getCreateCard: function (publicity, NumberArr) {
       var cardElement = cardTemplate.cloneNode(true);
       var blcokPhotos = cardElement.querySelector('.popup__photos');
-      var randomFeatures = random.getRandomLengthArr(Features);
+      var randomFeatures = window.data.random.getRandomLengthArr(Features);
       var popupFeaturesList = cardElement.querySelector('.popup__features');
       var popupFeatures = cardElement.querySelectorAll('.popup__feature');
       var popupClose = cardElement.querySelector('.popup__close');
