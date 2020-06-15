@@ -228,33 +228,35 @@ var onPopupEscPress = function (evt) {
   }
 };
 
-var getCreatePin = function (publicity, NumberArr) {
+(function () {
+  window.pin.getCreatePin = function (publicity, NumberArr) {
 
-  var pinElement = pinTemplate.cloneNode(true);
-  pinElement.style.left = publicity.location.x - PIN_WIDTH / 2 + 'px';
-  pinElement.style.top = publicity.location.y - PIN_HEIGHT + 'px';
-  pinElement.querySelector('img').src = publicity.author.avatar;
-  pinElement.querySelector('img').alt = publicity.offer.title;
+    var pinElement = pinTemplate.cloneNode(true);
+    pinElement.style.left = publicity.location.x - PIN_WIDTH / 2 + 'px';
+    pinElement.style.top = publicity.location.y - PIN_HEIGHT + 'px';
+    pinElement.querySelector('img').src = publicity.author.avatar;
+    pinElement.querySelector('img').alt = publicity.offer.title;
 
-  var openPopup = function () {
-    for (i = 0; i < cards.length; i++) {
-      cards[i].classList.add('hidden');
-    }
-    cards[NumberArr].classList.remove('hidden');
-    map.insertBefore(cards[NumberArr], adFilter);
-    document.addEventListener('keydown', onPopupEscPress);
+    var openPopup = function () {
+      for (i = 0; i < cards.length; i++) {
+        cards[i].classList.add('hidden');
+      }
+      cards[NumberArr].classList.remove('hidden');
+      map.insertBefore(cards[NumberArr], adFilter);
+      document.addEventListener('keydown', onPopupEscPress);
+    };
+
+    pinElement.addEventListener('click', function () {
+      openPopup();
+    });
+
+    return pinElement;
   };
-
-  pinElement.addEventListener('click', function () {
-    openPopup();
-  });
-
-  return pinElement;
-};
+})();
 
 var createPinFragment = function () {
   for (i = 0; i < ads.length; i++) {
-    pinFragment.appendChild(getCreatePin(ads[i], i));
+    pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
   }
 };
 
