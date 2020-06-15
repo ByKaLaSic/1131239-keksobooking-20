@@ -1,15 +1,29 @@
 'use strict';
 
+(function () {
+  var Keys = {
+    enter: 13,
+    esc: 27
+  };
+  var MouseKeys = {
+    leftButton: 0
+  };
+  window.util = {
+    leftButtonPressed: function (evt) {
+      return evt.button === MouseKeys.leftButton;
+    },
+    isEscPressed: function (evt) {
+      return evt.keyCode === Keys.esc;
+    },
+    isEnterPressed: function (evt) {
+      return evt.keyCode === Keys.enter;
+    }
+  };
+})();
+
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
-var Keys = {
-  enter: 13,
-  esc: 27
-};
-var MouseKeys = {
-  leftButton: 0
-};
 var Times = [
   '12:00',
   '13:00',
@@ -64,18 +78,6 @@ var timeout = adForm.querySelector('#timeout');
 var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
-
-var leftButtonPressed = function (evt) {
-  return evt.button === MouseKeys.leftButton;
-};
-
-var isEscPressed = function (evt) {
-  return evt.keyCode === Keys.esc;
-};
-
-var isEnterPressed = function (evt) {
-  return evt.keyCode === Keys.enter;
-};
 
 var SelectGuestsValidation = {
   1: '1',
@@ -160,13 +162,13 @@ var activeState = function () {
 };
 
 mainPin.addEventListener('keydown', function (evt) {
-  if (isEnterPressed(evt)) {
+  if (window.util.isEnterPressed(evt)) {
     activeState();
   }
 });
 
 mainPin.addEventListener('mousedown', function (evt) {
-  if (leftButtonPressed(evt)) {
+  if (window.util.leftButtonPressed(evt)) {
     activeState();
   }
 });
@@ -222,7 +224,7 @@ var arrayAds = function () {
 };
 
 var onPopupEscPress = function (evt) {
-  if (isEscPressed(evt)) {
+  if (window.utul.isEscPressed(evt)) {
     evt.preventDefault();
     // closePopup();
   }
