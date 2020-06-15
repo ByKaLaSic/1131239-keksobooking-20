@@ -254,66 +254,68 @@ var onPopupEscPress = function (evt) {
   };
 })();
 
+(function () {
+  window.card.getCreateCard = function (publicity, NumberArr) {
+
+    var cardElement = cardTemplate.cloneNode(true);
+    var blcokPhotos = cardElement.querySelector('.popup__photos');
+    var randomFeatures = random.getRandomLengthArr(Features);
+    var popupFeaturesList = cardElement.querySelector('.popup__features');
+    var popupFeatures = cardElement.querySelectorAll('.popup__feature');
+    var popupClose = cardElement.querySelector('.popup__close');
+
+    var makeTextElement = function (className, text) {
+      cardElement.querySelector(className).textContent = text;
+    };
+
+    makeTextElement('.popup__title', publicity.offer.title);
+    makeTextElement('.popup__text--address', publicity.offer.address);
+    makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
+    makeTextElement('.popup__type', publicity.offer.type);
+    makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
+    makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
+    makeTextElement('.popup__description', publicity.offer.description);
+    cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
+
+    for (i = Features.length - 1; i >= randomFeatures.length; i--) {
+      popupFeaturesList.removeChild(popupFeatures[i]);
+    }
+
+    for (i = 0; i < publicity.offer.photos.length; i++) {
+      if (i === 0) {
+        var photo = blcokPhotos.querySelector('.popup__photo');
+        photo.src = publicity.offer.photos[0];
+      } else {
+        var newPhoto = photo.cloneNode();
+        newPhoto.src = publicity.offer.photos[i];
+        blcokPhotos.appendChild(newPhoto);
+      }
+    }
+
+    cards.push(cardElement);
+
+    var closePopup = function () {
+      cards[NumberArr].classList.add('hidden');
+      document.removeEventListener('keydown', onPopupEscPress);
+    };
+
+    popupClose.addEventListener('click', function () {
+      closePopup();
+    });
+
+    return cardElement;
+  };
+})();
+
 var createPinFragment = function () {
   for (i = 0; i < ads.length; i++) {
     pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
   }
 };
 
-var getCreateCard = function (publicity, NumberArr) {
-
-  var cardElement = cardTemplate.cloneNode(true);
-  var blcokPhotos = cardElement.querySelector('.popup__photos');
-  var randomFeatures = random.getRandomLengthArr(Features);
-  var popupFeaturesList = cardElement.querySelector('.popup__features');
-  var popupFeatures = cardElement.querySelectorAll('.popup__feature');
-  var popupClose = cardElement.querySelector('.popup__close');
-
-  var makeTextElement = function (className, text) {
-    cardElement.querySelector(className).textContent = text;
-  };
-
-  makeTextElement('.popup__title', publicity.offer.title);
-  makeTextElement('.popup__text--address', publicity.offer.address);
-  makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
-  makeTextElement('.popup__type', publicity.offer.type);
-  makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
-  makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
-  makeTextElement('.popup__description', publicity.offer.description);
-  cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
-
-  for (i = Features.length - 1; i >= randomFeatures.length; i--) {
-    popupFeaturesList.removeChild(popupFeatures[i]);
-  }
-
-  for (i = 0; i < publicity.offer.photos.length; i++) {
-    if (i === 0) {
-      var photo = blcokPhotos.querySelector('.popup__photo');
-      photo.src = publicity.offer.photos[0];
-    } else {
-      var newPhoto = photo.cloneNode();
-      newPhoto.src = publicity.offer.photos[i];
-      blcokPhotos.appendChild(newPhoto);
-    }
-  }
-
-  cards.push(cardElement);
-
-  var closePopup = function () {
-    cards[NumberArr].classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
-  };
-
-  popupClose.addEventListener('click', function () {
-    closePopup();
-  });
-
-  return cardElement;
-};
-
 var createCardFragment = function () {
   for (var j = 0; j < ads.length; j++) {
-    cardFragment.appendChild(getCreateCard(ads[j], j));
+    cardFragment.appendChild(window.card.getCreateCard(ads[j], j));
   }
 };
 
