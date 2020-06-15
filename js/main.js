@@ -83,24 +83,9 @@ var Features = [
 var ads = [];
 var cards = [];
 var pinFragment = document.createDocumentFragment();
-
-var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
-var adFilter = document.querySelector('.map__filters-container');
 var map = document.querySelector('.map');
-var adForm = document.querySelector('.ad-form');
-var fieldsetAdForm = adForm.querySelectorAll('fieldset');
-var filterForm = document.querySelector('.map__filters');
-var filterFormChildren = filterForm.children;
 var mainPin = document.querySelector('.map__pin--main');
-var roomNumber = adForm.querySelector('#room_number');
-var capacity = adForm.querySelector('#capacity');
-var type = adForm.querySelector('#type');
-var price = adForm.querySelector('#price');
-var timein = adForm.querySelector('#timein');
-var timeout = adForm.querySelector('#timeout');
-var address = document.querySelector('#address');
-address.setAttribute('disabled', 'true');
-address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
+
 var onPopupEscPress = function (evt) {
   if (window.utul.isEscPressed(evt)) {
     evt.preventDefault();
@@ -138,6 +123,19 @@ var arrayAds = function () {
 
 (function () {
   var ANGLE_HEIGHT_MAIN_PIN = 15;
+  var adForm = document.querySelector('.ad-form');
+  var fieldsetAdForm = adForm.querySelectorAll('fieldset');
+  var filterForm = document.querySelector('.map__filters');
+  var filterFormChildren = filterForm.children;
+  var roomNumber = adForm.querySelector('#room_number');
+  var capacity = adForm.querySelector('#capacity');
+  var type = adForm.querySelector('#type');
+  var price = adForm.querySelector('#price');
+  var timein = adForm.querySelector('#timein');
+  var timeout = adForm.querySelector('#timeout');
+  var address = document.querySelector('#address');
+  address.setAttribute('disabled', 'true');
+  address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var SelectGuestsValidation = {
     1: '1',
@@ -228,6 +226,7 @@ var arrayAds = function () {
   var PIN_WIDTH = 50;
   var PIN_HEIGHT = 70;
   var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
+  var adFilter = document.querySelector('.map__filters-container');
 
   window.pin = {
     getCreatePin: function (publicity, NumberArr) {
@@ -257,6 +256,8 @@ var arrayAds = function () {
 })();
 
 (function () {
+  var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
+
   window.card = {
     getCreateCard: function (publicity, NumberArr) {
       var cardElement = cardTemplate.cloneNode(true);
