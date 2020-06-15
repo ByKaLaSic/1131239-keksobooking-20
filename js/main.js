@@ -24,6 +24,7 @@
 (function () {
   var MIN_PIN_Y = 130;
   var MAX_PIN_Y = 630;
+  var map = document.querySelector('.map');
 
   window.data = {
     random: {
@@ -46,7 +47,8 @@
         var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
         return pinY;
       }
-    }
+    },
+    map: map
   };
 })();
 
@@ -83,7 +85,6 @@ var Features = [
 var ads = [];
 var cards = [];
 var pinFragment = document.createDocumentFragment();
-var map = document.querySelector('.map');
 var mainPin = document.querySelector('.map__pin--main');
 
 var onPopupEscPress = function (evt) {
@@ -206,7 +207,7 @@ var arrayAds = function () {
 
   window.form = {
     activeState: function () {
-      map.classList.remove('map--faded');
+      window.data.map.classList.remove('map--faded');
       adForm.classList.remove('ad-form--disabled');
       pinList.appendChild(pinFragment);
       address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
@@ -242,7 +243,7 @@ var arrayAds = function () {
           cards[i].classList.add('hidden');
         }
         cards[NumberArr].classList.remove('hidden');
-        map.insertBefore(cards[NumberArr], adFilter);
+        window.data.map.insertBefore(cards[NumberArr], adFilter);
         document.addEventListener('keydown', onPopupEscPress);
       };
 
