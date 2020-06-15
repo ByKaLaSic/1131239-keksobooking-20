@@ -46,25 +46,25 @@
   var arrayAds = function () {
     for (var j = 1; j <= QUANTITY_ADS; j++) {
       var ad = {
-        'author': {
-          'avatar': 'img/avatars/user0' + j + '.png'
+        author: {
+          avatar: 'img/avatars/user0' + j + '.png'
         },
-        'offer': {
-          'title': 'Заголовок',
-          'address': '600, 350',
-          'price': 7000,
-          'type': HousesTypes[window.data.random.getRandomElementFormArray(TYPES)],
-          'rooms': 3,
-          'guests': 7,
-          'checkin': window.data.random.getRandomElementFormArray(TIMES),
-          'checkout': window.data.random.getRandomElementFormArray(TIMES),
-          'features': window.data.random.getRandomLengthArr(Features),
-          'description': 'Описание',
-          'photos': window.data.random.getRandomLengthArr(photos)
+        offer: {
+          title: 'Заголовок',
+          address: '600, 350',
+          price: 7000,
+          type: HousesTypes[window.data.random.getRandomElementFormArray(TYPES)],
+          rooms: 3,
+          guests: 7,
+          checkin: window.data.random.getRandomElementFormArray(TIMES),
+          checkout: window.data.random.getRandomElementFormArray(TIMES),
+          features: window.data.random.getRandomLengthArr(Features),
+          description: 'Описание',
+          photos: window.data.random.getRandomLengthArr(photos)
         },
-        'location': {
-          'x': window.data.random.getRandomX(),
-          'y': window.data.random.getRandomY()
+        location: {
+          x: window.data.random.getRandomX(),
+          y: window.data.random.getRandomY()
         }
       };
       ads.push(ad);

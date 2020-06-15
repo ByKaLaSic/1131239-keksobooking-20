@@ -41,11 +41,11 @@
   });
 
   var selectPriceValidation = {
-    'Бунгало': '0',
-    'Квартира': '1000',
-    'Дом': '5000',
-    'Дворец': '10000',
-    'setCustomValidity': function () {
+    Бунгало: '0',
+    Квартира: '1000',
+    Дом: '5000',
+    Дворец: '10000',
+    setCustomValidity: function () {
       if (this[window.main.HousesTypes[type.value]] > price.value) {
         price.setCustomValidity('Маленькая стоимость');
         return;
