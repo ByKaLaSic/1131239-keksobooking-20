@@ -165,18 +165,6 @@ address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.o
   };
 })();
 
-mainPin.addEventListener('keydown', function (evt) {
-  if (window.util.isEnterPressed(evt)) {
-    window.form.activeState();
-  }
-});
-
-mainPin.addEventListener('mousedown', function (evt) {
-  if (window.util.leftButtonPressed(evt)) {
-    window.form.activeState();
-  }
-});
-
 (function () {
   window.data = {
     random: {
@@ -320,18 +308,32 @@ var onPopupEscPress = function (evt) {
   };
 })();
 
-var createPinFragment = function () {
-  for (var i = 0; i < ads.length; i++) {
-    pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
-  }
-};
+(function () {
+  mainPin.addEventListener('keydown', function (evt) {
+    if (window.util.isEnterPressed(evt)) {
+      window.form.activeState();
+    }
+  });
 
-var createCardFragment = function () {
-  for (var j = 0; j < ads.length; j++) {
-    cardFragment.appendChild(window.card.getCreateCard(ads[j], j));
-  }
-};
+  mainPin.addEventListener('mousedown', function (evt) {
+    if (window.util.leftButtonPressed(evt)) {
+      window.form.activeState();
+    }
+  });
 
-arrayAds();
-createPinFragment();
-createCardFragment();
+  var createPinFragment = function () {
+    for (var i = 0; i < ads.length; i++) {
+      pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
+    }
+  };
+
+  var createCardFragment = function () {
+    for (var j = 0; j < ads.length; j++) {
+      cardFragment.appendChild(window.card.getCreateCard(ads[j], j));
+    }
+  };
+
+  arrayAds();
+  createPinFragment();
+  createCardFragment();
+})();
