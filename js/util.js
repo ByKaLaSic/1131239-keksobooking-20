@@ -2,21 +2,21 @@
 
 (function () {
   var Keys = {
-    enter: 13,
-    esc: 27
+    ENTER: 13,
+    ESCAPE: 27
   };
   var MouseKeys = {
-    leftButton: 0
+    LEFT_BUTTON: 0
   };
   window.util = {
     leftButtonPressed: function (evt) {
-      return evt.button === MouseKeys.leftButton;
+      return evt.button === MouseKeys.LEFT_BUTTON;
     },
     isEscPressed: function (evt) {
-      return evt.keyCode === Keys.esc;
+      return evt.keyCode === Keys.ESCAPE;
     },
     isEnterPressed: function (evt) {
-      return evt.keyCode === Keys.enter;
+      return evt.keyCode === Keys.ENTER;
     }
   };
 })();
