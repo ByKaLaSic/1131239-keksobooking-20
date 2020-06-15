@@ -56,8 +56,8 @@
 
   price.addEventListener('change', function () {
     selectPriceValidation.setCustomValidity();
-    var maxPrice = 1000000;
-    if (price.value > maxPrice) {
+    var MAX_PRICE = 1000000;
+    if (price.value > MAX_PRICE) {
       price.setCustomValidity('Цена должна быть не больше 1000000');
     }
   });
