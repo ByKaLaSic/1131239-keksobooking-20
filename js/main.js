@@ -21,6 +21,32 @@
   };
 })();
 
+(function () {
+  window.data = {
+    random: {
+      getRandomLengthArr: function (arr) {
+        var arrlength = Math.round(Math.random() * arr.length);
+        var newArr = [];
+        for (var i = 0; i < arrlength; i++) {
+          newArr.push(arr[i]);
+        }
+        return newArr;
+      },
+      getRandomElementFormArray: function (arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      },
+      getRandomX: function () {
+        var pinX = Math.floor(Math.random() * map.offsetWidth);
+        return pinX;
+      },
+      getRandomY: function () {
+        var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
+        return pinY;
+      }
+    }
+  };
+})();
+
 var MIN_PIN_Y = 130;
 var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
@@ -78,6 +104,40 @@ var timeout = adForm.querySelector('#timeout');
 var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
+var onPopupEscPress = function (evt) {
+  if (window.utul.isEscPressed(evt)) {
+    evt.preventDefault();
+    // closePopup();
+  }
+};
+
+var arrayAds = function () {
+  for (var j = 1; j <= QUANTITY_ADS; j++) {
+    var ad = {
+      'author': {
+        'avatar': 'img/avatars/user0' + j + '.png'
+      },
+      'offer': {
+        'title': 'Заголовок',
+        'address': '600, 350',
+        'price': 7000,
+        'type': HousesTypes[window.data.random.getRandomElementFormArray(Types)],
+        'rooms': 3,
+        'guests': 7,
+        'checkin': window.data.random.getRandomElementFormArray(Times),
+        'checkout': window.data.random.getRandomElementFormArray(Times),
+        'features': window.data.random.getRandomLengthArr(Features),
+        'description': 'Описание',
+        'photos': window.data.random.getRandomLengthArr(photos)
+      },
+      'location': {
+        'x': window.data.random.getRandomX(),
+        'y': window.data.random.getRandomY()
+      }
+    };
+    ads.push(ad);
+  }
+};
 
 (function () {
   var SelectGuestsValidation = {
@@ -164,67 +224,6 @@ address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.o
     }
   };
 })();
-
-(function () {
-  window.data = {
-    random: {
-      getRandomLengthArr: function (arr) {
-        var arrlength = Math.round(Math.random() * arr.length);
-        var newArr = [];
-        for (var i = 0; i < arrlength; i++) {
-          newArr.push(arr[i]);
-        }
-        return newArr;
-      },
-      getRandomElementFormArray: function (arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-      },
-      getRandomX: function () {
-        var pinX = Math.floor(Math.random() * map.offsetWidth);
-        return pinX;
-      },
-      getRandomY: function () {
-        var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
-        return pinY;
-      }
-    }
-  };
-})();
-
-var arrayAds = function () {
-  for (var j = 1; j <= QUANTITY_ADS; j++) {
-    var ad = {
-      'author': {
-        'avatar': 'img/avatars/user0' + j + '.png'
-      },
-      'offer': {
-        'title': 'Заголовок',
-        'address': '600, 350',
-        'price': 7000,
-        'type': HousesTypes[window.data.random.getRandomElementFormArray(Types)],
-        'rooms': 3,
-        'guests': 7,
-        'checkin': window.data.random.getRandomElementFormArray(Times),
-        'checkout': window.data.random.getRandomElementFormArray(Times),
-        'features': window.data.random.getRandomLengthArr(Features),
-        'description': 'Описание',
-        'photos': window.data.random.getRandomLengthArr(photos)
-      },
-      'location': {
-        'x': window.data.random.getRandomX(),
-        'y': window.data.random.getRandomY()
-      }
-    };
-    ads.push(ad);
-  }
-};
-
-var onPopupEscPress = function (evt) {
-  if (window.utul.isEscPressed(evt)) {
-    evt.preventDefault();
-    // closePopup();
-  }
-};
 
 (function () {
   window.pin = {
