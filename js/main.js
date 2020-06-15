@@ -79,15 +79,11 @@ var Features = [
   'washer',
   'elevator',
   'conditioner'];
-var ANGLE_HEIGHT_MAIN_PIN = 15;
-var PIN_WIDTH = 50;
-var PIN_HEIGHT = 70;
+
 var ads = [];
 var cards = [];
 var pinFragment = document.createDocumentFragment();
-var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
-var pinList = document.querySelector('.map__pins');
-var cardFragment = document.createDocumentFragment();
+
 var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
 var adFilter = document.querySelector('.map__filters-container');
 var map = document.querySelector('.map');
@@ -141,6 +137,8 @@ var arrayAds = function () {
 };
 
 (function () {
+  var ANGLE_HEIGHT_MAIN_PIN = 15;
+  var pinList = document.querySelector('.map__pins');
   var SelectGuestsValidation = {
     1: '1',
     2: '1, 2',
@@ -227,6 +225,10 @@ var arrayAds = function () {
 })();
 
 (function () {
+  var PIN_WIDTH = 50;
+  var PIN_HEIGHT = 70;
+  var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
+
   window.pin = {
     getCreatePin: function (publicity, NumberArr) {
 
@@ -309,6 +311,8 @@ var arrayAds = function () {
 })();
 
 (function () {
+  var cardFragment = document.createDocumentFragment();
+
   mainPin.addEventListener('keydown', function (evt) {
     if (window.util.isEnterPressed(evt)) {
       window.form.activeState();
