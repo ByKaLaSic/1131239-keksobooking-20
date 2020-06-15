@@ -79,97 +79,101 @@ var address = document.querySelector('#address');
 address.setAttribute('disabled', 'true');
 address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
 
-var SelectGuestsValidation = {
-  1: '1',
-  2: '1, 2',
-  3: '1, 2, 3',
-  100: '0',
-  setCustomValidity: function () {
-    if (this[roomNumber.value].indexOf(capacity.value) === -1) {
-      capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
-    } else {
-      capacity.setCustomValidity('');
+(function () {
+  var SelectGuestsValidation = {
+    1: '1',
+    2: '1, 2',
+    3: '1, 2, 3',
+    100: '0',
+    setCustomValidity: function () {
+      if (this[roomNumber.value].indexOf(capacity.value) === -1) {
+        capacity.setCustomValidity('Кол-во гостей не должно превышать кол-во комнат. "Нет гостей" только для 100 комнат');
+      } else {
+        capacity.setCustomValidity('');
+      }
     }
-  }
-};
+  };
 
-SelectGuestsValidation.setCustomValidity();
-
-roomNumber.addEventListener('change', function () {
   SelectGuestsValidation.setCustomValidity();
-});
 
-capacity.addEventListener('change', function () {
-  SelectGuestsValidation.setCustomValidity();
-});
+  roomNumber.addEventListener('change', function () {
+    SelectGuestsValidation.setCustomValidity();
+  });
 
-var selectPriceValidation = {
-  'Бунгало': '0',
-  'Квартира': '1000',
-  'Дом': '5000',
-  'Дворец': '10000',
-  'setCustomValidity': function () {
-    if (this[HousesTypes[type.value]] > price.value) {
-      price.setCustomValidity('Маленькая стоимость');
-      return;
+  capacity.addEventListener('change', function () {
+    SelectGuestsValidation.setCustomValidity();
+  });
+
+  var selectPriceValidation = {
+    'Бунгало': '0',
+    'Квартира': '1000',
+    'Дом': '5000',
+    'Дворец': '10000',
+    'setCustomValidity': function () {
+      if (this[HousesTypes[type.value]] > price.value) {
+        price.setCustomValidity('Маленькая стоимость');
+        return;
+      }
+      price.setCustomValidity('');
     }
-    price.setCustomValidity('');
+  };
+
+  price.addEventListener('change', function () {
+    selectPriceValidation.setCustomValidity();
+    var maxPrice = 1000000;
+    if (price.value > maxPrice) {
+      price.setCustomValidity('Цена должна быть не больше 1000000');
+    }
+  });
+
+  type.addEventListener('change', function () {
+    selectPriceValidation.setCustomValidity();
+    price.placeholder = selectPriceValidation[HousesTypes[type.value]];
+  });
+
+  timein.addEventListener('change', function () {
+    timeout.value = timein.value;
+  });
+
+  timeout.addEventListener('change', function () {
+    timein.value = timeout.value;
+  });
+
+  for (var i = 0; i < filterFormChildren.length; i++) {
+    filterFormChildren[i].setAttribute('disabled', 'true');
   }
-};
-
-price.addEventListener('change', function () {
-  selectPriceValidation.setCustomValidity();
-  var maxPrice = 1000000;
-  if (price.value > maxPrice) {
-    price.setCustomValidity('Цена должна быть не больше 1000000');
-  }
-});
-
-type.addEventListener('change', function () {
-  selectPriceValidation.setCustomValidity();
-  price.placeholder = selectPriceValidation[HousesTypes[type.value]];
-});
-
-timein.addEventListener('change', function () {
-  timeout.value = timein.value;
-});
-
-timeout.addEventListener('change', function () {
-  timein.value = timeout.value;
-});
-
-for (var i = 0; i < filterFormChildren.length; i++) {
-  filterFormChildren[i].setAttribute('disabled', 'true');
-}
-
-for (i = 0; i < fieldsetAdForm.length; i++) {
-  fieldsetAdForm[i].setAttribute('disabled', 'true');
-}
-
-var activeState = function () {
-  map.classList.remove('map--faded');
-  adForm.classList.remove('ad-form--disabled');
-  pinList.appendChild(pinFragment);
-  address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
 
   for (i = 0; i < fieldsetAdForm.length; i++) {
-    fieldsetAdForm[i].removeAttribute('disabled');
+    fieldsetAdForm[i].setAttribute('disabled', 'true');
   }
 
-  for (i = 0; i < filterFormChildren.length; i++) {
-    filterFormChildren[i].removeAttribute('disabled');
-  }
-};
+  window.form = {
+    activeState: function () {
+      map.classList.remove('map--faded');
+      adForm.classList.remove('ad-form--disabled');
+      pinList.appendChild(pinFragment);
+      address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
+
+      for (i = 0; i < fieldsetAdForm.length; i++) {
+        fieldsetAdForm[i].removeAttribute('disabled');
+      }
+
+      for (i = 0; i < filterFormChildren.length; i++) {
+        filterFormChildren[i].removeAttribute('disabled');
+      }
+    }
+  };
+})();
 
 mainPin.addEventListener('keydown', function (evt) {
   if (window.util.isEnterPressed(evt)) {
-    activeState();
+    window.form.activeState();
   }
 });
 
 mainPin.addEventListener('mousedown', function (evt) {
   if (window.util.leftButtonPressed(evt)) {
-    activeState();
+    window.form.activeState();
   }
 });
 
@@ -177,7 +181,7 @@ var random = {
   getRandomLengthArr: function (arr) {
     var arrlength = Math.round(Math.random() * arr.length);
     var newArr = [];
-    for (i = 0; i < arrlength; i++) {
+    for (var i = 0; i < arrlength; i++) {
       newArr.push(arr[i]);
     }
     return newArr;
@@ -240,7 +244,7 @@ var onPopupEscPress = function (evt) {
     pinElement.querySelector('img').alt = publicity.offer.title;
 
     var openPopup = function () {
-      for (i = 0; i < cards.length; i++) {
+      for (var i = 0; i < cards.length; i++) {
         cards[i].classList.add('hidden');
       }
       cards[NumberArr].classList.remove('hidden');
@@ -279,7 +283,7 @@ var onPopupEscPress = function (evt) {
     makeTextElement('.popup__description', publicity.offer.description);
     cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-    for (i = Features.length - 1; i >= randomFeatures.length; i--) {
+    for (var i = Features.length - 1; i >= randomFeatures.length; i--) {
       popupFeaturesList.removeChild(popupFeatures[i]);
     }
 
@@ -310,7 +314,7 @@ var onPopupEscPress = function (evt) {
 })();
 
 var createPinFragment = function () {
-  for (i = 0; i < ads.length; i++) {
+  for (var i = 0; i < ads.length; i++) {
     pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
   }
 };
