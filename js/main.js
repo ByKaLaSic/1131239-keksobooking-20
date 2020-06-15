@@ -22,6 +22,9 @@
 })();
 
 (function () {
+  var MIN_PIN_Y = 130;
+  var MAX_PIN_Y = 630;
+
   window.data = {
     random: {
       getRandomLengthArr: function (arr) {
@@ -47,8 +50,6 @@
   };
 })();
 
-var MIN_PIN_Y = 130;
-var MAX_PIN_Y = 630;
 var QUANTITY_ADS = 8;
 var Times = [
   '12:00',
