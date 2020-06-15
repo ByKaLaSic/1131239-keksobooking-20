@@ -2,12 +2,12 @@
 
 (function () {
   var QUANTITY_ADS = 8;
-  var Times = [
+  var TIMES = [
     '12:00',
     '13:00',
     '14:00'
   ];
-  var Types = [
+  var TYPES = [
     'palace',
     'flat',
     'house',
@@ -53,11 +53,11 @@
           'title': 'Заголовок',
           'address': '600, 350',
           'price': 7000,
-          'type': HousesTypes[window.data.random.getRandomElementFormArray(Types)],
+          'type': HousesTypes[window.data.random.getRandomElementFormArray(TYPES)],
           'rooms': 3,
           'guests': 7,
-          'checkin': window.data.random.getRandomElementFormArray(Times),
-          'checkout': window.data.random.getRandomElementFormArray(Times),
+          'checkin': window.data.random.getRandomElementFormArray(TIMES),
+          'checkout': window.data.random.getRandomElementFormArray(TIMES),
           'features': window.data.random.getRandomLengthArr(Features),
           'description': 'Описание',
           'photos': window.data.random.getRandomLengthArr(photos)
