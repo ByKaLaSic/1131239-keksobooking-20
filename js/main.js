@@ -35,12 +35,18 @@
   var cards = [];
   var pinFragment = document.createDocumentFragment();
   var mainPin = document.querySelector('.map__pin--main');
+  window.numberActiveCard = 0;
 
   var onPopupEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       evt.preventDefault();
-      // closePopup();
+      window.closePopup();
     }
+  };
+
+  window.closePopup = function () {
+    cards[window.numberActiveCard].remove();
+    document.removeEventListener('keydown', onPopupEscPress);
   };
 
   var arrayAds = function () {

@@ -23,7 +23,7 @@
 
   var createCardFragment = function () {
     for (var j = 0; j < window.main.ads.length; j++) {
-      cardFragment.appendChild(window.card.getCreateCard(window.main.ads[j], j));
+      cardFragment.appendChild(window.card.getCreateCard(window.main.ads[j]));
     }
   };
 

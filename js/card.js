@@ -4,7 +4,7 @@
   var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
 
   window.card = {
-    getCreateCard: function (publicity, NumberArr) {
+    getCreateCard: function (publicity) {
       var cardElement = cardTemplate.cloneNode(true);
       var blcokPhotos = cardElement.querySelector('.popup__photos');
       var randomFeatures = window.data.random.getRandomLengthArr(window.main.Features);
@@ -42,13 +42,8 @@
 
       window.main.cards.push(cardElement);
 
-      var closePopup = function () {
-        window.main.cards[NumberArr].remove();
-        document.removeEventListener('keydown', window.main.onPopupEscPress);
-      };
-
       popupClose.addEventListener('click', function () {
-        closePopup();
+        window.closePopup();
       });
 
       return cardElement;
