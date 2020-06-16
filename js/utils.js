@@ -8,7 +8,7 @@
   var MouseKeys = {
     LEFT_BUTTON: 0
   };
-  window.util = {
+  window.utils = {
     leftButtonPressed: function (evt) {
       return evt.button === MouseKeys.LEFT_BUTTON;
     },

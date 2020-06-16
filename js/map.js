@@ -4,13 +4,13 @@
   var cardFragment = document.createDocumentFragment();
 
   window.main.mainPin.addEventListener('keydown', function (evt) {
-    if (window.util.isEnterPressed(evt)) {
+    if (window.utils.isEnterPressed(evt)) {
       window.form.activeState();
     }
   });
 
   window.main.mainPin.addEventListener('mousedown', function (evt) {
-    if (window.util.leftButtonPressed(evt)) {
+    if (window.utils.leftButtonPressed(evt)) {
       window.form.activeState();
     }
   });
