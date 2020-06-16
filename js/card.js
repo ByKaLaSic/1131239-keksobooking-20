@@ -43,7 +43,7 @@
       window.main.cards.push(cardElement);
 
       var closePopup = function () {
-        window.main.cards[NumberArr].classList.add('hidden');
+        window.main.cards[NumberArr].remove();
         document.removeEventListener('keydown', window.main.onPopupEscPress);
       };
 

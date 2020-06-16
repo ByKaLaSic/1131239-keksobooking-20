@@ -17,9 +17,8 @@
 
       var openPopup = function () {
         for (var i = 0; i < window.main.cards.length; i++) {
-          window.main.cards[i].classList.add('hidden');
+          window.main.cards[i].remove();
         }
-        window.main.cards[NumberArr].classList.remove('hidden');
         window.data.map.insertBefore(window.main.cards[NumberArr], adFilter);
         document.addEventListener('keydown', window.main.onPopupEscPress);
       };
