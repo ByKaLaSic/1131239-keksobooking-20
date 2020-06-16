@@ -37,7 +37,7 @@
   var mainPin = document.querySelector('.map__pin--main');
 
   var onPopupEscPress = function (evt) {
-    if (window.utul.isEscPressed(evt)) {
+    if (window.util.isEscPressed(evt)) {
       evt.preventDefault();
       // closePopup();
     }
