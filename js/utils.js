@@ -8,15 +8,18 @@
   var MouseKeys = {
     LEFT_BUTTON: 0
   };
+  var leftButtonPressed = function (evt) {
+    return evt.button === MouseKeys.LEFT_BUTTON;
+  };
+  var isEscPressed = function (evt) {
+    return evt.keyCode === Keys.ESCAPE;
+  };
+  var isEnterPressed = function (evt) {
+    return evt.keyCode === Keys.ENTER;
+  };
   window.utils = {
-    leftButtonPressed: function (evt) {
-      return evt.button === MouseKeys.LEFT_BUTTON;
-    },
-    isEscPressed: function (evt) {
-      return evt.keyCode === Keys.ESCAPE;
-    },
-    isEnterPressed: function (evt) {
-      return evt.keyCode === Keys.ENTER;
-    }
+    leftButtonPressed: leftButtonPressed,
+    isEscPressed: isEscPressed,
+    isEnterPressed: isEnterPressed
   };
 })();
