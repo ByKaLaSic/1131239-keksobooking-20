@@ -13,17 +13,17 @@
     'house',
     'bungalo'
   ];
-  var HousesTypes = {
+  var HOUSES_TYPES = {
     palace: 'Дворец',
     flat: 'Квартира',
     bungalo: 'Бунгало',
     house: 'Дом'
   };
-  var photos = [
+  var PHOTOS = [
     'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
     'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
     'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-  var Features = [
+  var FEATURES = [
     'wifi',
     'dishwasher',
     'parking',
@@ -59,14 +59,14 @@
           title: 'Заголовок',
           address: '600, 350',
           price: 7000,
-          type: HousesTypes[window.data.random.getRandomElementFormArray(TYPES)],
+          type: HOUSES_TYPES[window.data.random.getRandomElementFormArray(TYPES)],
           rooms: 3,
           guests: 7,
           checkin: window.data.random.getRandomElementFormArray(TIMES),
           checkout: window.data.random.getRandomElementFormArray(TIMES),
-          features: window.data.random.getRandomLengthArr(Features),
+          features: window.data.random.getRandomLengthArr(FEATURES),
           description: 'Описание',
-          photos: window.data.random.getRandomLengthArr(photos)
+          photos: window.data.random.getRandomLengthArr(PHOTOS)
         },
         location: {
           x: window.data.random.getRandomX(),
@@ -82,8 +82,8 @@
     mainPin: mainPin,
     onPopupEscPress: onPopupEscPress,
     arrayAds: arrayAds,
-    HousesTypes: HousesTypes,
-    Features: Features,
+    HOUSES_TYPES: HOUSES_TYPES,
+    FEATURES: FEATURES,
     ads: ads,
     closePopup: closePopup,
     numberActiveCard: numberActiveCard

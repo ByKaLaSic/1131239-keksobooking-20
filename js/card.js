@@ -7,7 +7,7 @@
     getCreateCard: function (publicity) {
       var cardElement = cardTemplate.cloneNode(true);
       var blcokPhotos = cardElement.querySelector('.popup__photos');
-      var randomFeatures = window.data.random.getRandomLengthArr(window.main.Features);
+      var randomFeatures = window.data.random.getRandomLengthArr(window.main.FEATURES);
       var popupFeaturesList = cardElement.querySelector('.popup__features');
       var popupFeatures = cardElement.querySelectorAll('.popup__feature');
       var popupClose = cardElement.querySelector('.popup__close');
@@ -25,7 +25,7 @@
       makeTextElement('.popup__description', publicity.offer.description);
       cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-      for (var i = window.main.Features.length - 1; i >= randomFeatures.length; i--) {
+      for (var i = window.main.FEATURES.length - 1; i >= randomFeatures.length; i--) {
         popupFeaturesList.removeChild(popupFeatures[i]);
       }
 
