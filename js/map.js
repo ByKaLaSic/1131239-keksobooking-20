@@ -10,7 +10,7 @@
   });
 
   window.main.mainPin.addEventListener('mousedown', function (evt) {
-    if (window.utils.leftButtonPressed(evt)) {
+    if (window.utils.isLeftButtonPressed(evt)) {
       window.form.activeState();
     }
   });

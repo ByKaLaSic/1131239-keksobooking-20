@@ -8,7 +8,7 @@
   var MouseKeys = {
     LEFT_BUTTON: 0
   };
-  var leftButtonPressed = function (evt) {
+  var isLeftButtonPressed = function (evt) {
     return evt.button === MouseKeys.LEFT_BUTTON;
   };
   var isEscPressed = function (evt) {
@@ -18,7 +18,7 @@
     return evt.keyCode === Keys.ENTER;
   };
   window.utils = {
-    leftButtonPressed: leftButtonPressed,
+    isLeftButtonPressed: isLeftButtonPressed,
     isEscPressed: isEscPressed,
     isEnterPressed: isEnterPressed
   };
