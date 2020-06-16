@@ -43,7 +43,7 @@
       window.main.cards.push(cardElement);
 
       popupClose.addEventListener('click', function () {
-        window.closePopup();
+        window.main.closePopup();
       });
 
       return cardElement;

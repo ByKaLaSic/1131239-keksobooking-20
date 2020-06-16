@@ -40,11 +40,11 @@
   var onPopupEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       evt.preventDefault();
-      window.closePopup();
+      closePopup();
     }
   };
 
-  window.closePopup = function () {
+  var closePopup = function () {
     cards[window.numberActiveCard].remove();
     document.removeEventListener('keydown', onPopupEscPress);
   };
@@ -84,6 +84,7 @@
     arrayAds: arrayAds,
     HousesTypes: HousesTypes,
     Features: Features,
-    ads: ads
+    ads: ads,
+    closePopup: closePopup
   };
 })();
