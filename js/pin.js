@@ -24,7 +24,7 @@
       };
 
       pinElement.addEventListener('click', function () {
-        window.numberActiveCard = NumberArr;
+        window.main.numberActiveCard = NumberArr;
         openPopup();
       });
 
