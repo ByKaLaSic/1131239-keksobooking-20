@@ -16,13 +16,8 @@
   var onPopupEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       evt.preventDefault();
-      closePopup();
+      window.card.closePopup();
     }
-  };
-
-  var closePopup = function () {
-    cards[window.main.numberActiveCard].remove();
-    document.removeEventListener('keydown', onPopupEscPress);
   };
 
   var errorHandler = function (errorMessage) {
@@ -64,7 +59,6 @@
     onPopupEscPress: onPopupEscPress,
     HOUSES_TYPES: HOUSES_TYPES,
     ads: ads,
-    closePopup: closePopup,
     numberActiveCard: numberActiveCard
   };
 })();

@@ -4,6 +4,11 @@
   var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
   var cardFragment = document.createDocumentFragment();
 
+  var closePopup = function () {
+    window.main.cards[window.main.numberActiveCard].remove();
+    document.removeEventListener('keydown', window.main.onPopupEscPress);
+  };
+
   window.card = {
     getCreateCard: function (publicity) {
       var cardElement = cardTemplate.cloneNode(true);
@@ -45,11 +50,12 @@
       window.main.cards.push(cardElement);
 
       popupClose.addEventListener('click', function () {
-        window.main.closePopup();
+        closePopup();
       });
 
       return cardElement;
     },
-    cardFragment: cardFragment
+    cardFragment: cardFragment,
+    closePopup: closePopup
   };
 })();
