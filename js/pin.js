@@ -5,6 +5,7 @@
   var PIN_HEIGHT = 70;
   var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
   var adFilter = document.querySelector('.map__filters-container');
+  var map = document.querySelector('.map');
 
   window.pin = {
     getCreatePin: function (publicity, NumberArr) {
@@ -19,7 +20,7 @@
         for (var i = 0; i < window.main.cards.length; i++) {
           window.main.cards[i].remove();
         }
-        window.data.map.insertBefore(window.main.cards[NumberArr], adFilter);
+        map.insertBefore(window.main.cards[NumberArr], adFilter);
         document.addEventListener('keydown', window.main.onPopupEscPress);
       };
 

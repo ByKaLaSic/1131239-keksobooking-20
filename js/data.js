@@ -26,7 +26,6 @@
         var pinY = Math.floor(Math.random() * (MAX_PIN_Y - MIN_PIN_Y)) + MIN_PIN_Y;
         return pinY;
       }
-    },
-    map: map
+    }
   };
 })();

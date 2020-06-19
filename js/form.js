@@ -2,6 +2,7 @@
 
 (function () {
   var ANGLE_HEIGHT_MAIN_PIN = 15;
+  var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
   var fieldsetAdForm = adForm.querySelectorAll('fieldset');
   var filterForm = document.querySelector('.map__filters');
@@ -85,7 +86,7 @@
 
   window.form = {
     activeState: function () {
-      window.data.map.classList.remove('map--faded');
+      map.classList.remove('map--faded');
       adForm.classList.remove('ad-form--disabled');
       pinList.appendChild(window.main.pinFragment);
       address.value = window.main.mainPin.offsetLeft - window.main.mainPin.offsetWidth / 2 + ', ' + (window.main.mainPin.offsetTop - window.main.mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
