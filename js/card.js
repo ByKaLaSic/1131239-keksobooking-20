@@ -3,9 +3,10 @@
 (function () {
   var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
   var cardFragment = document.createDocumentFragment();
+  var cards = [];
 
   var closePopup = function () {
-    window.main.cards[window.main.numberActiveCard].remove();
+    cards[window.main.numberActiveCard].remove();
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -54,7 +55,7 @@
         }
       }
 
-      window.main.cards.push(cardElement);
+      cards.push(cardElement);
 
       popupClose.addEventListener('click', function () {
         closePopup();
@@ -64,6 +65,7 @@
     },
     cardFragment: cardFragment,
     closePopup: closePopup,
-    onPopupEscPress: onPopupEscPress
+    onPopupEscPress: onPopupEscPress,
+    cards: cards
   };
 })();

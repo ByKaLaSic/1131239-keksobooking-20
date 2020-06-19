@@ -18,10 +18,10 @@
       pinElement.querySelector('img').alt = publicity.offer.title;
 
       var openPopup = function () {
-        for (var i = 0; i < window.main.cards.length; i++) {
-          window.main.cards[i].remove();
+        for (var i = 0; i < window.card.cards.length; i++) {
+          window.card.cards[i].remove();
         }
-        map.insertBefore(window.main.cards[NumberArr], adFilter);
+        map.insertBefore(window.card.cards[NumberArr], adFilter);
         document.addEventListener('keydown', window.card.onPopupEscPress);
       };
 
