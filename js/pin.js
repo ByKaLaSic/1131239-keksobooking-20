@@ -18,6 +18,7 @@
       pinElement.querySelector('img').alt = publicity.offer.title;
 
       var openPopup = function () {
+        window.card.numberActiveCard = NumberArr;
         for (var i = 0; i < window.card.cards.length; i++) {
           window.card.cards[i].remove();
         }
@@ -26,7 +27,6 @@
       };
 
       pinElement.addEventListener('click', function () {
-        window.card.numberActiveCard = NumberArr;
         openPopup();
       });
 
