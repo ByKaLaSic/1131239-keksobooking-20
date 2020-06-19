@@ -22,7 +22,7 @@
           window.main.cards[i].remove();
         }
         map.insertBefore(window.main.cards[NumberArr], adFilter);
-        document.addEventListener('keydown', window.main.onPopupEscPress);
+        document.addEventListener('keydown', window.card.onPopupEscPress);
       };
 
       pinElement.addEventListener('click', function () {

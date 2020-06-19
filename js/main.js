@@ -13,13 +13,6 @@
   var mainPin = document.querySelector('.map__pin--main');
   var numberActiveCard;
 
-  var onPopupEscPress = function (evt) {
-    if (window.utils.isEscPressed(evt)) {
-      evt.preventDefault();
-      window.card.closePopup();
-    }
-  };
-
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
@@ -56,7 +49,6 @@
   window.main = {
     cards: cards,
     mainPin: mainPin,
-    onPopupEscPress: onPopupEscPress,
     HOUSES_TYPES: HOUSES_TYPES,
     ads: ads,
     numberActiveCard: numberActiveCard

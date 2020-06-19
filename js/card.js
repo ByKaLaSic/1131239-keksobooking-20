@@ -6,7 +6,14 @@
 
   var closePopup = function () {
     window.main.cards[window.main.numberActiveCard].remove();
-    document.removeEventListener('keydown', window.main.onPopupEscPress);
+    document.removeEventListener('keydown', onPopupEscPress);
+  };
+
+  var onPopupEscPress = function (evt) {
+    if (window.utils.isEscPressed(evt)) {
+      evt.preventDefault();
+      window.card.closePopup();
+    }
   };
 
   window.card = {
@@ -56,6 +63,7 @@
       return cardElement;
     },
     cardFragment: cardFragment,
-    closePopup: closePopup
+    closePopup: closePopup,
+    onPopupEscPress: onPopupEscPress
   };
 })();
