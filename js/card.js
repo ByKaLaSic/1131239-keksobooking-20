@@ -12,7 +12,7 @@
   var onPopupEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       evt.preventDefault();
-      window.card.closePopup();
+      closePopup();
     }
   };
 
