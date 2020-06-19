@@ -10,7 +10,6 @@
 
   var ads = [];
   var cards = [];
-  var pinFragment = document.createDocumentFragment();
   var mainPin = document.querySelector('.map__pin--main');
   var cardFragment = document.createDocumentFragment();
   var numberActiveCard;
@@ -37,7 +36,7 @@
     }
     var createPinFragment = function () {
       for (var i = 0; i < window.main.ads.length; i++) {
-        window.main.pinFragment.appendChild(window.pin.getCreatePin(window.main.ads[i], i));
+        window.pin.pinFragment.appendChild(window.pin.getCreatePin(window.main.ads[i], i));
       }
     };
     var createCardFragment = function () {
@@ -54,7 +53,6 @@
 
   window.main = {
     cards: cards,
-    pinFragment: pinFragment,
     mainPin: mainPin,
     onPopupEscPress: onPopupEscPress,
     HOUSES_TYPES: HOUSES_TYPES,

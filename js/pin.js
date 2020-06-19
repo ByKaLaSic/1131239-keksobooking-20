@@ -6,6 +6,7 @@
   var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
   var adFilter = document.querySelector('.map__filters-container');
   var map = document.querySelector('.map');
+  var pinFragment = document.createDocumentFragment();
 
   window.pin = {
     getCreatePin: function (publicity, NumberArr) {
@@ -30,6 +31,7 @@
       });
 
       return pinElement;
-    }
+    },
+    pinFragment: pinFragment
   };
 })();

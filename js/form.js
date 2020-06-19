@@ -88,7 +88,7 @@
     activeState: function () {
       map.classList.remove('map--faded');
       adForm.classList.remove('ad-form--disabled');
-      pinList.appendChild(window.main.pinFragment);
+      pinList.appendChild(window.pin.pinFragment);
       address.value = window.main.mainPin.offsetLeft - window.main.mainPin.offsetWidth / 2 + ', ' + (window.main.mainPin.offsetTop - window.main.mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
 
       for (i = 0; i < fieldsetAdForm.length; i++) {
