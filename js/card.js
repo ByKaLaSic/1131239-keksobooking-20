@@ -7,9 +7,7 @@
     getCreateCard: function (publicity) {
       var cardElement = cardTemplate.cloneNode(true);
       var blcokPhotos = cardElement.querySelector('.popup__photos');
-      // var randomFeatures = window.data.random.getRandomLengthArr(window.main.FEATURES);
       var popupFeaturesList = cardElement.querySelector('.popup__features');
-      // var popupFeatures = cardElement.querySelectorAll('.popup__feature');
       var popupClose = cardElement.querySelector('.popup__close');
 
       var makeTextElement = function (className, text) {
@@ -26,7 +24,6 @@
       cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
       for (var i = 0; i < publicity.offer.features.length; i++) {
-        // popupFeaturesList.removeChild(popupFeatures[i]);
         var featureElement = document.createElement('li');
         featureElement.classList.add('popup__feature');
         featureElement.classList.add('popup__feature--' + publicity.offer.features[i]);
