@@ -9,7 +9,6 @@
   };
 
   var ads = [];
-  var numberActiveCard;
 
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
@@ -46,7 +45,6 @@
 
   window.main = {
     HOUSES_TYPES: HOUSES_TYPES,
-    ads: ads,
-    numberActiveCard: numberActiveCard
+    ads: ads
   };
 })();
