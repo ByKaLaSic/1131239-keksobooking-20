@@ -3,6 +3,7 @@
 (function () {
   var ANGLE_HEIGHT_MAIN_PIN = 15;
   var map = document.querySelector('.map');
+  var mainPin = document.querySelector('.map__pin--main');
   var adForm = document.querySelector('.ad-form');
   var fieldsetAdForm = adForm.querySelectorAll('fieldset');
   var filterForm = document.querySelector('.map__filters');
@@ -15,7 +16,7 @@
   var timeout = adForm.querySelector('#timeout');
   var address = document.querySelector('#address');
   address.setAttribute('disabled', 'true');
-  address.value = window.main.mainPin.offsetLeft - window.main.mainPin.offsetWidth / 2 + ', ' + (window.main.mainPin.offsetTop - window.main.mainPin.offsetHeight / 2);
+  address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var SelectGuestsValidation = {
     1: '1',
@@ -89,7 +90,7 @@
       map.classList.remove('map--faded');
       adForm.classList.remove('ad-form--disabled');
       pinList.appendChild(window.pin.pinFragment);
-      address.value = window.main.mainPin.offsetLeft - window.main.mainPin.offsetWidth / 2 + ', ' + (window.main.mainPin.offsetTop - window.main.mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
+      address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
 
       for (i = 0; i < fieldsetAdForm.length; i++) {
         fieldsetAdForm[i].removeAttribute('disabled');

@@ -1,13 +1,14 @@
 'use strict';
 
 (function () {
-  window.main.mainPin.addEventListener('keydown', function (evt) {
+  var mainPin = document.querySelector('.map__pin--main');
+  mainPin.addEventListener('keydown', function (evt) {
     if (window.utils.isEnterPressed(evt)) {
       window.form.activeState();
     }
   });
 
-  window.main.mainPin.addEventListener('mousedown', function (evt) {
+  mainPin.addEventListener('mousedown', function (evt) {
     if (window.utils.isLeftButtonPressed(evt)) {
       window.form.activeState();
     }

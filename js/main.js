@@ -9,7 +9,6 @@
   };
 
   var ads = [];
-  var mainPin = document.querySelector('.map__pin--main');
   var numberActiveCard;
 
   var errorHandler = function (errorMessage) {
@@ -46,7 +45,6 @@
   window.load(successHandler, errorHandler);
 
   window.main = {
-    mainPin: mainPin,
     HOUSES_TYPES: HOUSES_TYPES,
     ads: ads,
     numberActiveCard: numberActiveCard
