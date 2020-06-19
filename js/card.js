@@ -2,6 +2,7 @@
 
 (function () {
   var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
+  var cardFragment = document.createDocumentFragment();
 
   window.card = {
     getCreateCard: function (publicity) {
@@ -48,6 +49,7 @@
       });
 
       return cardElement;
-    }
+    },
+    cardFragment: cardFragment
   };
 })();

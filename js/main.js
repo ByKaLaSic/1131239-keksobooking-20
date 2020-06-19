@@ -11,7 +11,6 @@
   var ads = [];
   var cards = [];
   var mainPin = document.querySelector('.map__pin--main');
-  var cardFragment = document.createDocumentFragment();
   var numberActiveCard;
 
   var onPopupEscPress = function (evt) {
@@ -41,7 +40,7 @@
     };
     var createCardFragment = function () {
       for (j = 0; j < window.main.ads.length; j++) {
-        cardFragment.appendChild(window.card.getCreateCard(window.main.ads[j]));
+        window.card.cardFragment.appendChild(window.card.getCreateCard(window.main.ads[j]));
       }
     };
 
