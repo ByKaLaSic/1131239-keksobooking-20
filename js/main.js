@@ -1,28 +1,28 @@
 'use strict';
 
 (function () {
-  var QUANTITY_ADS = 8;
-  var TIMES = [
-    '12:00',
-    '13:00',
-    '14:00'
-  ];
-  var TYPES = [
-    'palace',
-    'flat',
-    'house',
-    'bungalo'
-  ];
+  // var QUANTITY_ADS = 8;
+  // var TIMES = [
+  //   '12:00',
+  //   '13:00',
+  //   '14:00'
+  // ];
+  // var TYPES = [
+  //   'palace',
+  //   'flat',
+  //   'house',
+  //   'bungalo'
+  // ];
   var HOUSES_TYPES = {
     palace: 'Дворец',
     flat: 'Квартира',
     bungalo: 'Бунгало',
     house: 'Дом'
   };
-  var PHOTOS = [
-    'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
-    'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
-    'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+  // var PHOTOS = [
+  //   'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
+  //   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
+  //   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
   var FEATURES = [
     'wifi',
     'dishwasher',
@@ -49,39 +49,42 @@
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
-  var arrayAds = function () {
-    for (var j = 1; j <= QUANTITY_ADS; j++) {
-      var ad = {
-        author: {
-          avatar: 'img/avatars/user0' + j + '.png'
-        },
-        offer: {
-          title: 'Заголовок',
-          address: '600, 350',
-          price: 7000,
-          type: HOUSES_TYPES[window.data.random.getRandomElementFormArray(TYPES)],
-          rooms: 3,
-          guests: 7,
-          checkin: window.data.random.getRandomElementFormArray(TIMES),
-          checkout: window.data.random.getRandomElementFormArray(TIMES),
-          features: window.data.random.getRandomLengthArr(FEATURES),
-          description: 'Описание',
-          photos: window.data.random.getRandomLengthArr(PHOTOS)
-        },
-        location: {
-          x: window.data.random.getRandomX(),
-          y: window.data.random.getRandomY()
-        }
-      };
-      ads.push(ad);
-    }
+  // var successHandler = function (wizards) {
+  //   var fragment = document.createDocumentFragment();
+
+  //   for (var i = 0; i < MAX_SIMILAR_WIZARD_COUNT; i++) {
+  //     fragment.appendChild(renderWizard(wizards[i]));
+  //   }
+  //   similarListElement.appendChild(fragment);
+
+  //   userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  // };
+
+  var errorHandler = function (errorMessage) {
+    return errorMessage;
   };
+
+  var successHandler = function (arrAds) {
+    for (var j = 0; j < arrAds.length; j++) {
+      ads.push(arrAds[j]);
+    }
+
+    var createPinFragment = function () {
+      for (var i = 0; i < window.main.ads.length; i++) {
+        window.main.pinFragment.appendChild(window.pin.getCreatePin(window.main.ads[i], i));
+      }
+    };
+
+    createPinFragment();
+  };
+
+  window.load(successHandler, errorHandler);
+
   window.main = {
     cards: cards,
     pinFragment: pinFragment,
     mainPin: mainPin,
     onPopupEscPress: onPopupEscPress,
-    arrayAds: arrayAds,
     HOUSES_TYPES: HOUSES_TYPES,
     FEATURES: FEATURES,
     ads: ads,
