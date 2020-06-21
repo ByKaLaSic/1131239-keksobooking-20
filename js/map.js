@@ -13,4 +13,7 @@
       window.form.activeState();
     }
   });
+  window.map = {
+    mainPin: mainPin
+  };
 })();
