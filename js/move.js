@@ -13,8 +13,8 @@
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
 
-      var rangeX = +window.map.mainPin.style.left.replace('px', '') + window.map.mainPin.offsetWidth / 2;
-      var rangeY = +window.map.mainPin.style.top.replace('px', '') + window.map.mainPin.offsetHeight + 15;
+      var rangeX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
+      var rangeY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + 15;
 
       if (rangeX > 0 && rangeX < 1200 &&
           rangeY > 130 && rangeY < 630) {
@@ -38,7 +38,8 @@
       }
 
       // console.log(rangeX);
-      console.log(rangeY);
+      // console.log(rangeY);
+      console.log(window.form.address.value = rangeX + ', ' + rangeY);
     };
 
     var onMouseUp = function (upEvt) {

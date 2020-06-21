@@ -16,7 +16,7 @@
   var timeout = adForm.querySelector('#timeout');
   var address = document.querySelector('#address');
   address.setAttribute('disabled', 'true');
-  address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight / 2);
+  address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var SelectGuestsValidation = {
     1: '1',
@@ -90,7 +90,7 @@
       map.classList.remove('map--faded');
       adForm.classList.remove('ad-form--disabled');
       pinList.appendChild(window.pin.pinFragment);
-      address.value = mainPin.offsetLeft - mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop - mainPin.offsetHeight - ANGLE_HEIGHT_MAIN_PIN);
+      address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
 
       for (i = 0; i < fieldsetAdForm.length; i++) {
         fieldsetAdForm[i].removeAttribute('disabled');
@@ -99,6 +99,7 @@
       for (i = 0; i < filterFormChildren.length; i++) {
         filterFormChildren[i].removeAttribute('disabled');
       }
-    }
+    },
+    address: address
   };
 })();
