@@ -2,6 +2,11 @@
 
 (function () {
 
+  var MIN_RANGE_X = 0;
+  var MAX_RANGE_X = window.map.map.offsetWidth;
+  var MIN_RANGE_Y = 130;
+  var MAX_RANGE_Y = 630;
+
   window.map.mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
@@ -16,8 +21,8 @@
       var rangeX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
       var rangeY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + 15;
 
-      if (rangeX > 0 && rangeX < 1200 &&
-          rangeY > 130 && rangeY < 630) {
+      if (rangeX > MIN_RANGE_X && rangeX < MAX_RANGE_X &&
+          rangeY > MIN_RANGE_Y && rangeY < MAX_RANGE_Y) {
 
         var shift = {
           x: startCoords.x - moveEvt.clientX,

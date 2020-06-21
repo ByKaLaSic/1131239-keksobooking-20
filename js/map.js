@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var map = document.querySelector('.map');
   var mainPin = document.querySelector('.map__pin--main');
   mainPin.addEventListener('keydown', function (evt) {
     if (window.utils.isEnterPressed(evt)) {
@@ -14,6 +15,7 @@
     }
   });
   window.map = {
-    mainPin: mainPin
+    mainPin: mainPin,
+    map: map
   };
 })();
