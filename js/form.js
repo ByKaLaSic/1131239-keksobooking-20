@@ -100,6 +100,7 @@
         filterFormChildren[i].removeAttribute('disabled');
       }
     },
-    address: address
+    address: address,
+    ANGLE_HEIGHT_MAIN_PIN: ANGLE_HEIGHT_MAIN_PIN
   };
 })();

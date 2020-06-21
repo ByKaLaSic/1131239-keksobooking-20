@@ -19,7 +19,7 @@
       moveEvt.preventDefault();
 
       var rangeX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
-      var rangeY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + 15;
+      var rangeY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN;
 
       if (rangeX > MIN_RANGE_X && rangeX < MAX_RANGE_X &&
           rangeY > MIN_RANGE_Y && rangeY < MAX_RANGE_Y) {
