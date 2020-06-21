@@ -18,27 +18,45 @@
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
 
-      var rangeX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
-      var rangeY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN;
+      var angleForX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
+      var angleForY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN;
 
-      if (rangeX > MIN_RANGE_X && rangeX < MAX_RANGE_X &&
-          rangeY > MIN_RANGE_Y && rangeY < MAX_RANGE_Y) {
+      var shift = {
+        x: startCoords.x - moveEvt.clientX,
+        y: startCoords.y - moveEvt.clientY
+      };
 
-        var shift = {
-          x: startCoords.x - moveEvt.clientX,
-          y: startCoords.y - moveEvt.clientY
-        };
+      startCoords = {
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
+      };
 
-        startCoords = {
-          x: moveEvt.clientX,
-          y: moveEvt.clientY
-        };
+      if (angleForX > MIN_RANGE_X && angleForX < MAX_RANGE_X &&
+        angleForY > MIN_RANGE_Y && angleForY < MAX_RANGE_Y) {
 
         window.map.mainPin.style.top = (window.map.mainPin.offsetTop - shift.y) + 'px';
         window.map.mainPin.style.left = (window.map.mainPin.offsetLeft - shift.x) + 'px';
+      } else {
+        switch (false) {
+          case angleForX > MIN_RANGE_X:
+            window.map.mainPin.style.left = window.map.mainPin.offsetWidth / -2 + 'px';
+            break;
+          case angleForX < MAX_RANGE_X:
+            window.map.mainPin.style.left = window.map.map.offsetWidth - window.map.mainPin.offsetWidth / 2 - 1 + 'px';
+            // break;
+          // case 'Зима':
+            // answer = 'Тельняжку';
+            // break;
+          // case 'Лето':
+            // answer = 'Майку';
+            // break;
+          // case 'Весна':
+            // answer = 'Плащ';
+            // break;
+        }
       }
 
-      window.form.address.value = rangeX + ', ' + rangeY;
+      window.form.address.value = angleForX + ', ' + angleForY;
     };
 
     var onMouseUp = function (upEvt) {
