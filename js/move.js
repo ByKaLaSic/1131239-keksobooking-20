@@ -18,6 +18,7 @@
 
       if (rangeX > 0 && rangeX < 1200 &&
           rangeY > 130 && rangeY < 630) {
+
         var shift = {
           x: startCoords.x - moveEvt.clientX,
           y: startCoords.y - moveEvt.clientY
@@ -28,18 +29,11 @@
           y: moveEvt.clientY
         };
 
-        // var ost = window.map.mainPin.offsetLeft - window.map.mainPin.offsetWidth / 2 + ', ' + (window.map.mainPin.offsetTop - window.map.mainPin.offsetHeight - 15);
-
         window.map.mainPin.style.top = (window.map.mainPin.offsetTop - shift.y) + 'px';
         window.map.mainPin.style.left = (window.map.mainPin.offsetLeft - shift.x) + 'px';
-        console.log('true');
-      } else {
-        console.log('false');
       }
 
-      // console.log(rangeX);
-      // console.log(rangeY);
-      console.log(window.form.address.value = rangeX + ', ' + rangeY);
+      window.form.address.value = rangeX + ', ' + rangeY;
     };
 
     var onMouseUp = function (upEvt) {
