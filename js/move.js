@@ -49,10 +49,7 @@
             break;
           case angleForY <= MAX_RANGE_Y:
             window.map.mainPin.style.top = MAX_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
-            // break;
-          // case 'Весна':
-            // answer = 'Плащ';
-            // break;
+            break;
         }
       }
 
