@@ -36,7 +36,6 @@
         window.card.cardFragment.appendChild(window.card.getCreateCard(window.main.ads[j]));
       }
     };
-    console.log(arrAds);
 
     createPinFragment();
     createCardFragment();
