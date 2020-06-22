@@ -98,9 +98,12 @@
         fieldsetAdForm[i].setAttribute('disabled', 'true');
       }
 
-      for (i = 0; i < pins.length; i++) {
-        pinList.removeChild.pins[i];
+      for (i = 1; i < pins.length; i++) {
+        pinList.removeChild(pins[i]);
       }
+
+      window.map.mainPin.style.top = 375 + 'px';
+      window.map.mainPin.style.left = 570 + 'px';
     });
     evt.preventDefault();
   });
