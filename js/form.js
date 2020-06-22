@@ -15,7 +15,6 @@
   var timein = adForm.querySelector('#timein');
   var timeout = adForm.querySelector('#timeout');
   var address = document.querySelector('#address');
-  address.setAttribute('disabled', 'true');
   address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var SelectGuestsValidation = {
