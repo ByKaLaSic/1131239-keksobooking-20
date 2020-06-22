@@ -86,27 +86,42 @@
 
   adForm.addEventListener('submit', function (evt) {
     window.upload(new FormData(adForm), function () {
-      // userDialog.classList.add('hidden');
-      console.log('изи');
+      map.classList.add('map--faded');
+      adForm.classList.add('ad-form--disabled');
+      var pins = document.querySelectorAll('.map__pin');
+
+      for (i = 0; i < filterFormChildren.length; i++) {
+        filterFormChildren[i].setAttribute('disabled', 'true');
+      }
+
+      for (i = 0; i < fieldsetAdForm.length; i++) {
+        fieldsetAdForm[i].setAttribute('disabled', 'true');
+      }
+
+      for (i = 0; i < pins.length; i++) {
+        pinList.removeChild.pins[i];
+      }
     });
     evt.preventDefault();
   });
 
+  var activeState = function () {
+    map.classList.remove('map--faded');
+    adForm.classList.remove('ad-form--disabled');
+    pinList.appendChild(window.pin.pinFragment);
+    address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
+
+    for (i = 0; i < fieldsetAdForm.length; i++) {
+      fieldsetAdForm[i].removeAttribute('disabled');
+    }
+
+    for (i = 0; i < filterFormChildren.length; i++) {
+      filterFormChildren[i].removeAttribute('disabled');
+    }
+  };
+
   window.form = {
-    activeState: function () {
-      map.classList.remove('map--faded');
-      adForm.classList.remove('ad-form--disabled');
-      pinList.appendChild(window.pin.pinFragment);
-      address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
-
-      for (i = 0; i < fieldsetAdForm.length; i++) {
-        fieldsetAdForm[i].removeAttribute('disabled');
-      }
-
-      for (i = 0; i < filterFormChildren.length; i++) {
-        filterFormChildren[i].removeAttribute('disabled');
-      }
-    },
+    activeState: activeState,
     address: address,
     ANGLE_HEIGHT_MAIN_PIN: ANGLE_HEIGHT_MAIN_PIN
   };
