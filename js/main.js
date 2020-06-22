@@ -39,12 +39,13 @@
 
     createPinFragment();
     createCardFragment();
+    window.form.activeState();
   };
-
-  window.load(successHandler, errorHandler);
 
   window.main = {
     HOUSES_TYPES: HOUSES_TYPES,
-    ads: ads
+    ads: ads,
+    errorHandler: errorHandler,
+    successHandler: successHandler
   };
 })();
