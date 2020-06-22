@@ -86,24 +86,7 @@
 
   adForm.addEventListener('submit', function (evt) {
     window.upload(new FormData(adForm), function () {
-      map.classList.add('map--faded');
-      adForm.classList.add('ad-form--disabled');
-      var pins = document.querySelectorAll('.map__pin');
-
-      for (i = 0; i < filterFormChildren.length; i++) {
-        filterFormChildren[i].setAttribute('disabled', 'true');
-      }
-
-      for (i = 0; i < fieldsetAdForm.length; i++) {
-        fieldsetAdForm[i].setAttribute('disabled', 'true');
-      }
-
-      for (i = 1; i < pins.length; i++) {
-        pinList.removeChild(pins[i]);
-      }
-
-      window.map.mainPin.style.top = 375 + 'px';
-      window.map.mainPin.style.left = 570 + 'px';
+      reverseActiveState();
     });
     evt.preventDefault();
   });
@@ -121,6 +104,27 @@
     for (i = 0; i < filterFormChildren.length; i++) {
       filterFormChildren[i].removeAttribute('disabled');
     }
+  };
+
+  var reverseActiveState = function () {
+    map.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
+    var pins = document.querySelectorAll('.map__pin');
+
+    for (i = 0; i < filterFormChildren.length; i++) {
+      filterFormChildren[i].setAttribute('disabled', 'true');
+    }
+
+    for (i = 0; i < fieldsetAdForm.length; i++) {
+      fieldsetAdForm[i].setAttribute('disabled', 'true');
+    }
+
+    for (i = 1; i < pins.length; i++) {
+      pinList.removeChild(pins[i]);
+    }
+
+    window.map.mainPin.style.top = 375 + 'px';
+    window.map.mainPin.style.left = 570 + 'px';
   };
 
   window.form = {
