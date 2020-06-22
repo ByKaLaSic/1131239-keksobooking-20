@@ -84,6 +84,14 @@
     fieldsetAdForm[i].setAttribute('disabled', 'true');
   }
 
+  adForm.addEventListener('submit', function (evt) {
+    window.upload(new FormData(adForm), function () {
+      // userDialog.classList.add('hidden');
+      console.log('изи');
+    });
+    evt.preventDefault();
+  });
+
   window.form = {
     activeState: function () {
       map.classList.remove('map--faded');
