@@ -53,7 +53,7 @@
         }
       }
 
-      window.form.address.value = angleForX + ', ' + angleForY;
+      window.form.address.value = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2 + ', ' + (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN);
     };
 
     var onMouseUp = function (upEvt) {
