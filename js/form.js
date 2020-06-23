@@ -19,6 +19,7 @@
   var pinList = document.querySelector('.map__pins');
   var resetButton = document.querySelector('.ad-form__reset');
   var success = document.querySelector('#success').content.querySelector('.success');
+  var error = document.querySelector('#error').content.querySelector('.error');
   var main = document.querySelector('main');
   var SelectGuestsValidation = {
     1: '1',
@@ -94,21 +95,44 @@
     }
   };
 
+  var onErrorEscPress = function (evt) {
+    if (window.utils.isEscPressed(evt)) {
+      evt.preventDefault();
+      closeError();
+    }
+  };
+
   var closeSuccess = function () {
     main.removeChild(success);
     document.removeEventListener('keydown', onSuccessEscPress);
+  };
+
+  var closeError = function () {
+    main.removeChild(error);
+    document.removeEventListener('keydown', onErrorEscPress);
   };
 
   success.addEventListener('click', function () {
     closeSuccess();
   });
 
+  error.addEventListener('click', function () {
+    closeError();
+  });
+
+  var successHandler = function () {
+    main.append(success);
+    document.addEventListener('keydown', onSuccessEscPress);
+    reverseActiveState(reset);
+  };
+
+  var errorHandler = function () {
+    main.append(error);
+    document.addEventListener('keydown', onErrorEscPress);
+  };
+
   adForm.addEventListener('submit', function (evt) {
-    window.upload(new FormData(adForm), function () {
-      main.append(success);
-      document.addEventListener('keydown', onSuccessEscPress);
-      reverseActiveState(reset);
-    });
+    window.upload(new FormData(adForm), successHandler, errorHandler);
     evt.preventDefault();
   });
 
