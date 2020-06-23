@@ -18,6 +18,8 @@
   address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var resetButton = document.querySelector('.ad-form__reset');
+  var success = document.querySelector('#success').content.querySelector('.success');
+  var main = document.querySelector('main');
   var SelectGuestsValidation = {
     1: '1',
     2: '1, 2',
@@ -85,8 +87,22 @@
     fieldsetAdForm[i].setAttribute('disabled', 'true');
   }
 
+  var onSuccessEscPress = function (evt) {
+    if (window.utils.isEscPressed(evt)) {
+      evt.preventDefault();
+      closeSuccess();
+    }
+  };
+
+  var closeSuccess = function () {
+    main.removeChild(success);
+    document.removeEventListener('keydown', onSuccessEscPress);
+  };
+
   adForm.addEventListener('submit', function (evt) {
     window.upload(new FormData(adForm), function () {
+      main.append(success);
+      document.addEventListener('keydown', onSuccessEscPress);
       reverseActiveState(reset);
     });
     evt.preventDefault();
