@@ -99,6 +99,10 @@
     document.removeEventListener('keydown', onSuccessEscPress);
   };
 
+  success.addEventListener('click', function () {
+    closeSuccess();
+  });
+
   adForm.addEventListener('submit', function (evt) {
     window.upload(new FormData(adForm), function () {
       main.append(success);
