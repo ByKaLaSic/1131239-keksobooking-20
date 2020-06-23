@@ -18,9 +18,8 @@
       pinElement.querySelector('img').alt = publicity.offer.title;
 
       var openPopup = function () {
-        window.card.numberActiveCard = NumberArr;
-        for (var i = 0; i < window.card.cards.length; i++) {
-          window.card.cards[i].remove();
+        if (document.querySelector('.map__card')) {
+          document.querySelector('.map__card').remove();
         }
         map.insertBefore(window.card.cards[NumberArr], adFilter);
         document.addEventListener('keydown', window.card.onPopupEscPress);

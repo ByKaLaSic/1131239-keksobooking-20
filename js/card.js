@@ -4,10 +4,9 @@
   var cardTemplate = document.querySelector('#card').content.querySelector('.map__card');
   var cardFragment = document.createDocumentFragment();
   var cards = [];
-  var numberActiveCard;
 
   var closePopup = function () {
-    cards[window.card.numberActiveCard].remove();
+    document.querySelector('.map__card').remove();
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -67,7 +66,6 @@
     cardFragment: cardFragment,
     closePopup: closePopup,
     onPopupEscPress: onPopupEscPress,
-    cards: cards,
-    numberActiveCard: numberActiveCard
+    cards: cards
   };
 })();
