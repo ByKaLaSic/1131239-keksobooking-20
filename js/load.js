@@ -2,7 +2,7 @@
 
 (function () {
   var URL = 'https://javascript.pages.academy/keksobooking/data';
-  var StatusCode = {
+  var StatusCodes = {
     OK: 200
   };
   var TIMEOUT_IN_MS = 10000;
@@ -12,7 +12,7 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === StatusCode.OK) {
+      if (xhr.status === StatusCodes.OK) {
         onSuccess(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);

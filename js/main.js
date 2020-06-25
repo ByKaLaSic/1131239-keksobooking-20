@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var HOUSES_TYPES = {
+  var HousesTypes = {
     palace: 'Дворец',
     flat: 'Квартира',
     bungalo: 'Бунгало',
@@ -43,7 +43,7 @@
   };
 
   window.main = {
-    HOUSES_TYPES: HOUSES_TYPES,
+    HousesTypes: HousesTypes,
     ads: ads,
     errorHandler: errorHandler,
     successHandler: successHandler

@@ -51,7 +51,7 @@
     Дом: '5000',
     Дворец: '10000',
     setCustomValidity: function () {
-      if (this[window.main.HOUSES_TYPES[type.value]] > price.value) {
+      if (this[window.main.HousesTypes[type.value]] > price.value) {
         price.setCustomValidity('Маленькая стоимость');
         return;
       }
@@ -69,7 +69,7 @@
 
   type.addEventListener('change', function () {
     selectPriceValidation.setCustomValidity();
-    price.placeholder = selectPriceValidation[window.main.HOUSES_TYPES[type.value]];
+    price.placeholder = selectPriceValidation[window.main.HousesTypes[type.value]];
   });
 
   timein.addEventListener('change', function () {

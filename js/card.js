@@ -31,7 +31,7 @@
       makeTextElement('.popup__title', publicity.offer.title);
       makeTextElement('.popup__text--address', publicity.offer.address);
       makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
-      makeTextElement('.popup__type', window.main.HOUSES_TYPES[publicity.offer.type]);
+      makeTextElement('.popup__type', window.main.HousesTypes[publicity.offer.type]);
       makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
       makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
       makeTextElement('.popup__description', publicity.offer.description);
