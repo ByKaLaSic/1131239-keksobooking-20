@@ -152,6 +152,8 @@
   };
 
   var reverseActiveState = function (reset) {
+    var elementaryMainPinX = 570;
+    var elementaryMainPinY = 375;
     map.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     var pins = document.querySelectorAll('.map__pin');
@@ -168,8 +170,8 @@
       pinList.removeChild(pins[i]);
     }
 
-    window.map.mainPin.style.top = 375 + 'px';
-    window.map.mainPin.style.left = 570 + 'px';
+    window.map.mainPin.style.top = elementaryMainPinY + 'px';
+    window.map.mainPin.style.left = elementaryMainPinX + 'px';
     reset();
     address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   };
