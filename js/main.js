@@ -23,19 +23,18 @@
   var successHandler = function (arrAds) {
     var ads = arrAds;
 
-    var createPinFragment = function () {
+    (function () {
       for (var i = 0; i < ads.length; i++) {
         window.pin.pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
       }
-    };
-    var createCardFragment = function () {
+    })();
+
+    (function () {
       for (var j = 0; j < ads.length; j++) {
         window.card.cardFragment.appendChild(window.card.getCreateCard(ads[j]));
       }
-    };
+    })();
 
-    createPinFragment();
-    createCardFragment();
     window.form.activeState();
   };
 
