@@ -13,9 +13,9 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === StatusCodes.OK) {
         onSuccess(xhr.response);
-      } else {
-        onError();
+        return;
       }
+      onError();
     });
 
     xhr.open('POST', URL);
