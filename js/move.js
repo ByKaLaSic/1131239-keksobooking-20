@@ -18,7 +18,7 @@
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
 
-      var angleForX = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2;
+      var angleForX = window.map.mainPin.offsetLeft + Math.round(window.map.mainPin.offsetWidth / 2);
       var angleForY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN;
 
       var shift = {
@@ -42,7 +42,7 @@
             window.map.mainPin.style.left = window.map.mainPin.offsetWidth / -2 + 'px';
             break;
           case angleForX <= MAX_RANGE_X:
-            window.map.mainPin.style.left = MAX_RANGE_X - window.map.mainPin.offsetWidth / 2 - 0.5 + 'px';
+            window.map.mainPin.style.left = MAX_RANGE_X - Math.round(window.map.mainPin.offsetWidth / 2) - 0.5 + 'px';
             break;
           case angleForY >= MIN_RANGE_Y:
             window.map.mainPin.style.top = MIN_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
@@ -53,7 +53,7 @@
         }
       }
 
-      window.form.address.value = window.map.mainPin.offsetLeft + window.map.mainPin.offsetWidth / 2 + ', ' + (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN);
+      window.form.address.value = window.map.mainPin.offsetLeft + Math.round(window.map.mainPin.offsetWidth / 2) + ', ' + (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN);
     };
 
     var onMouseUp = function (upEvt) {

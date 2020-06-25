@@ -15,7 +15,7 @@
   var timein = adForm.querySelector('#timein');
   var timeout = adForm.querySelector('#timeout');
   var address = document.querySelector('#address');
-  address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
+  address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var resetButton = document.querySelector('.ad-form__reset');
   var success = document.querySelector('#success').content.querySelector('.success');
@@ -138,7 +138,7 @@
     map.classList.remove('map--faded');
     adForm.classList.remove('ad-form--disabled');
     pinList.appendChild(window.pin.pinFragment);
-    address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
+    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
 
     for (i = 0; i < fieldsetAdForm.length; i++) {
       fieldsetAdForm[i].removeAttribute('disabled');
@@ -171,12 +171,12 @@
     window.map.mainPin.style.top = elementaryMainPinY + 'px';
     window.map.mainPin.style.left = elementaryMainPinX + 'px';
     reset();
-    address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
+    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
   };
 
   var reset = function () {
     adForm.reset();
-    address.value = mainPin.offsetLeft + mainPin.offsetWidth / 2 + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
+    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
   };
 
   resetButton.addEventListener('click', function () {
