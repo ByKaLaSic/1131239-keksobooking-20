@@ -88,16 +88,14 @@
     fieldsetAdForm[i].setAttribute('disabled', 'true');
   }
 
-  var onSuccessEscPress = function (evt) {
-    if (window.utils.isEscPressed(evt)) {
-      evt.preventDefault();
+  var onSuccessEscPress = function () {
+    if (window.utils.isEscPressed()) {
       closeSuccess();
     }
   };
 
-  var onErrorEscPress = function (evt) {
-    if (window.utils.isEscPressed(evt)) {
-      evt.preventDefault();
+  var onErrorEscPress = function () {
+    if (window.utils.isEscPressed()) {
       closeError();
     }
   };
