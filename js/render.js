@@ -6,11 +6,11 @@
 
   var getRank = function (pin) {
     var rank = 0;
-
+    // console.log(pin.offer.type);
     if (pin.offer.type === type.value) {
       rank += 1;
     }
-
+    // console.log(rank);
     return rank;
   };
 
@@ -29,9 +29,10 @@
       var rankDiff = getRank(right) - getRank(left);
       if (rankDiff === 0) {
         // rankDiff = namesComparator(left.name, right.name);
-        console.log('Говно');
+        // console.log('Говно');
       }
     });
+    console.log(window.main.ads);
     console.log(s);
   });
 }());
