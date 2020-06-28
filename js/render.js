@@ -26,6 +26,7 @@
 
     form.addEventListener('change', function () {
       var adsCopy = window.main.ads.slice();
+
       adsCopy.sort(function (left, right) {
         var rankDiff = getRank(right) - getRank(left);
         if (rankDiff === 0) {
@@ -34,10 +35,9 @@
         return rankDiff;
       });
 
-      for (var i = 1; i <= pins.length; i++) {
+      for (var i = 1; i < pins.length; i++) {
         var pin = pins[i];
-        console.log(pin);
-        // pin.remove();
+        pin.remove();
       }
       window.createPinsCards(adsCopy);
     });
