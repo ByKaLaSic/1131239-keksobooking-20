@@ -40,6 +40,7 @@
         pin.remove();
       }
       window.createPinsCards(adsCopy);
+      console.log(adsCopy);
     });
   };
   window.filter = {
