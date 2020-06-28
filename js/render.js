@@ -6,35 +6,30 @@
 
   var getRank = function (pin) {
     var rank = 0;
-    // console.log(pin.offer.type);
     if (pin.offer.type === type.value) {
       rank += 1;
     }
-    // console.log(rank);
     return rank;
   };
 
-  // var namesComparator = function (left, right) {
-  //   if (left > right) {
-  //     return 1;
-  //   } else if (left < right) {
-  //     return -1;
-  //   } else {
-  //     return 0;
-  //   }
-  // };
+  var namesComparator = function (left, right) {
+    if (left.offer.title > right.offer.title) {
+      return 1;
+    } else if (left < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
 
   form.addEventListener('change', function () {
     var adsCopy = window.main.ads.slice();
     adsCopy.sort(function (left, right) {
       var rankDiff = getRank(right) - getRank(left);
       if (rankDiff === 0) {
-        // rankDiff = namesComparator(left.name, right.name);
-        // console.log('Говно');
+        rankDiff = namesComparator(left, right);
       }
       return rankDiff;
     });
-    // console.log(window.main.ads);
-    console.log(adsCopy);
   });
 }());

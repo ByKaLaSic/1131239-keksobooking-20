@@ -25,7 +25,7 @@
   var successHandler = function (arrAds) {
     var MAX_SIMILAR_PIN_COUNT = 5;
     ads = arrAds;
-
+    console.log(ads);
     (function () {
       for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
         window.pin.pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
