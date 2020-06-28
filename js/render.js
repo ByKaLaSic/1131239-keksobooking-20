@@ -25,14 +25,16 @@
   // };
 
   form.addEventListener('change', function () {
-    var s = window.main.ads.sort(function (left, right) {
+    var adsCopy = window.main.ads.slice();
+    adsCopy.sort(function (left, right) {
       var rankDiff = getRank(right) - getRank(left);
       if (rankDiff === 0) {
         // rankDiff = namesComparator(left.name, right.name);
         // console.log('Говно');
       }
+      return rankDiff;
     });
-    console.log(window.main.ads);
-    console.log(s);
+    // console.log(window.main.ads);
+    console.log(adsCopy);
   });
 }());
