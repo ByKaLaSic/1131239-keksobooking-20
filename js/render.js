@@ -1,4 +1,10 @@
 'use strict';
 
-var form = document.querySelector('.map__filters');
-console.log(form);
+(function () {
+  var form = document.querySelector('.map__filters');
+  var type = form.querySelector('#housing-type');
+
+  form.addEventListener('change', function () {
+    console.log(type);
+  });
+}());
