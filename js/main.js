@@ -9,6 +9,7 @@
   };
 
   var ads;
+  var pinList = document.querySelector('.map__pins');
 
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
@@ -24,7 +25,8 @@
 
   var createPinsCards = function (arr) {
     var MAX_SIMILAR_PIN_COUNT = 5;
-    var takeNumber = arr.length > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : arr.length;
+    var takeNumber = window.sameType > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : window.sameType;
+    // console.log(takeNumber);
 
     for (var i = 0; i < takeNumber; i++) {
       window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
@@ -33,12 +35,14 @@
     for (var j = 0; j < takeNumber; j++) {
       window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
     }
+
+    pinList.appendChild(window.pin.pinFragment);
   };
 
   var successHandler = function (arrAds) {
     ads = arrAds;
     window.main.ads = ads;
-    createPinsCards(ads);
+    // createPinsCards(ads);
     window.form.activeState();
     window.filter.filter();
   };

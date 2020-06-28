@@ -39,10 +39,18 @@
         var pin = pins[i];
         pin.remove();
       }
+
+      window.sameType = 0;
+      for (i = 0; i < window.main.ads.length; i++) {
+        if (adsCopy[i].offer.type === type.value) {
+          window.sameType += 1;
+        }
+      }
+
       window.main.createPinsCards(adsCopy);
-      console.log(adsCopy);
     });
   };
+
   window.filter = {
     filter: filter
   };
