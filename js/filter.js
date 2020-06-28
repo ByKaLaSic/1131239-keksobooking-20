@@ -39,7 +39,7 @@
         var pin = pins[i];
         pin.remove();
       }
-      window.createPinsCards(adsCopy);
+      window.main.createPinsCards(adsCopy);
       console.log(adsCopy);
     });
   };

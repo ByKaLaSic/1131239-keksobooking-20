@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var MAX_SIMILAR_PIN_COUNT = 5;
   var HousesTypes = {
     palace: 'Дворец',
     flat: 'Квартира',
@@ -22,22 +23,20 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
+  var createPinsCards = function (arr) {
+    for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
+      window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
+    }
+
+    for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
+      window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
+    }
+  };
+
   var successHandler = function (arrAds) {
-    var MAX_SIMILAR_PIN_COUNT = 5;
     ads = arrAds;
-
-    window.createPinsCards = function (arr) {
-      for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
-        window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
-      }
-
-      for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
-        window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
-      }
-    };
-
     window.main.ads = ads;
-    window.createPinsCards(ads);
+    createPinsCards(ads);
     window.form.activeState();
     window.filter.filter();
   };
@@ -46,6 +45,7 @@
     HousesTypes: HousesTypes,
     errorHandler: errorHandler,
     successHandler: successHandler,
-    ads: ads
+    ads: ads,
+    createPinsCards: createPinsCards
   };
 })();
