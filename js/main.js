@@ -25,20 +25,19 @@
   var successHandler = function (arrAds) {
     var MAX_SIMILAR_PIN_COUNT = 5;
     ads = arrAds;
-    console.log(ads);
-    (function () {
-      for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
-        window.pin.pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
-      }
-    })();
 
-    (function () {
-      for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
-        window.card.cardFragment.appendChild(window.card.getCreateCard(ads[j]));
+    window.createPinsCards = function (arr) {
+      for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
+        window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
       }
-    })();
+
+      for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
+        window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
+      }
+    };
 
     window.main.ads = ads;
+    window.createPinsCards(ads);
     window.form.activeState();
   };
 

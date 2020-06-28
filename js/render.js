@@ -3,6 +3,7 @@
 (function () {
   var form = document.querySelector('.map__filters');
   var type = form.querySelector('#housing-type');
+  var pins = document.querySelectorAll('.map__pin');
 
   var getRank = function (pin) {
     var rank = 0;
@@ -31,5 +32,12 @@
       }
       return rankDiff;
     });
+
+    for (var i = 1; i <= pins.length; i++) {
+      var pin = pins[i];
+      console.log(pin);
+      // pin.remove();
+    }
+    window.createPinsCards(adsCopy);
   });
 }());
