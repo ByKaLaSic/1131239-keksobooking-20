@@ -39,6 +39,7 @@
     window.main.ads = ads;
     window.createPinsCards(ads);
     window.form.activeState();
+    window.filter.filter();
   };
 
   window.main = {
