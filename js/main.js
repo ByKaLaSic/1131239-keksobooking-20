@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-  var MAX_SIMILAR_PIN_COUNT = 5;
   var HousesTypes = {
     palace: 'Дворец',
     flat: 'Квартира',
@@ -24,11 +23,14 @@
   };
 
   var createPinsCards = function (arr) {
-    for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
+    var MAX_SIMILAR_PIN_COUNT = 5;
+    var takeNumber = arr.length > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : arr.length;
+
+    for (var i = 0; i < takeNumber; i++) {
       window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
     }
 
-    for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
+    for (var j = 0; j < takeNumber; j++) {
       window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
     }
   };
