@@ -25,10 +25,6 @@
   };
 
   var createPinsCards = function () {
-    if (document.querySelector('.map__card')) {
-      document.querySelector('.map__card').remove();
-    }
-
     for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
       window.pin.pinFragment.appendChild(window.pin.getCreatePin(ads[i], i));
     }

@@ -54,17 +54,14 @@
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
-      // window.main.createPinsCards(newOffers);
-
-      // if (window.sameType) {
       var takeNumber = window.sameType > window.main.MAX_SIMILAR_PIN_COUNT ? window.main.MAX_SIMILAR_PIN_COUNT : window.sameType;
-      // } else {
-      //   takeNumber = window.main.MAX_SIMILAR_PIN_COUNT;
-      // }
+
+      if (document.querySelector('.map__card')) {
+        document.querySelector('.map__card').remove();
+      }
 
       for (i = 0; i < takeNumber; i++) {
         pinList.appendChild(newOffers[i]);
-        console.log(newOffers[i]);
       }
     });
   };
