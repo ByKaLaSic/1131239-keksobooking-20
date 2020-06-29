@@ -25,6 +25,10 @@
 
   var createPinsCards = function (arr) {
     var MAX_SIMILAR_PIN_COUNT = 5;
+    if (document.querySelector('.map__card')) {
+      document.querySelector('.map__card').remove();
+    }
+
     if (window.sameType) {
       var takeNumber = window.sameType > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : window.sameType;
     } else {
