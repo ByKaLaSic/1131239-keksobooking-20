@@ -91,6 +91,7 @@
   var onSuccessEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       closeSuccess();
+      reverseActiveState(reset);
     }
   };
 
@@ -112,6 +113,7 @@
 
   success.addEventListener('click', function () {
     closeSuccess();
+    reverseActiveState(reset);
   });
 
   error.addEventListener('click', function () {
@@ -121,7 +123,6 @@
   var successHandler = function () {
     main.append(success);
     document.addEventListener('keydown', onSuccessEscPress);
-    reverseActiveState(reset);
   };
 
   var errorHandler = function () {
