@@ -25,8 +25,11 @@
 
   var createPinsCards = function (arr) {
     var MAX_SIMILAR_PIN_COUNT = 5;
-    var takeNumber = window.sameType > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : window.sameType;
-    // console.log(takeNumber);
+    if (window.sameType) {
+      var takeNumber = window.sameType > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : window.sameType;
+    } else {
+      takeNumber = arr.length > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : arr.length;
+    }
 
     for (var i = 0; i < takeNumber; i++) {
       window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
