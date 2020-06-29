@@ -5,6 +5,7 @@
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
     // var pins = document.querySelectorAll('.map__pin');
+    var pinList = document.querySelector('.map__pins');
 
     var getRank = function (pin) {
       var rank = 0;
@@ -53,7 +54,18 @@
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
-      window.main.createPinsCards(newOffers);
+      // window.main.createPinsCards(newOffers);
+
+      // if (window.sameType) {
+      var takeNumber = window.sameType > window.main.MAX_SIMILAR_PIN_COUNT ? window.main.MAX_SIMILAR_PIN_COUNT : window.sameType;
+      // } else {
+      //   takeNumber = window.main.MAX_SIMILAR_PIN_COUNT;
+      // }
+
+      for (i = 0; i < takeNumber; i++) {
+        pinList.appendChild(newOffers[i]);
+        console.log(newOffers[i]);
+      }
     });
   };
 

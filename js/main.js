@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var MAX_SIMILAR_PIN_COUNT = 5;
   var HousesTypes = {
     palace: 'Дворец',
     flat: 'Квартира',
@@ -24,15 +25,8 @@
   };
 
   var createPinsCards = function (arr) {
-    var MAX_SIMILAR_PIN_COUNT = 5;
     if (document.querySelector('.map__card')) {
       document.querySelector('.map__card').remove();
-    }
-
-    if (window.sameType) {
-      var takeNumber = window.sameType > MAX_SIMILAR_PIN_COUNT ? MAX_SIMILAR_PIN_COUNT : window.sameType;
-    } else {
-      takeNumber = MAX_SIMILAR_PIN_COUNT;
     }
 
     // for (var i = 0; i < takeNumber; i++) {
@@ -43,10 +37,6 @@
     //   window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
     // }
 
-    for (var i = 0; i < takeNumber; i++) {
-      pinList.appendChild(arr[i]);
-      console.log(arr[i]);
-    }
     // console.log(arr);
   };
 
@@ -63,6 +53,7 @@
     errorHandler: errorHandler,
     successHandler: successHandler,
     ads: ads,
-    createPinsCards: createPinsCards
+    createPinsCards: createPinsCards,
+    MAX_SIMILAR_PIN_COUNT: MAX_SIMILAR_PIN_COUNT
   };
 })();
