@@ -29,21 +29,21 @@
       document.querySelector('.map__card').remove();
     }
 
-    // for (var i = 0; i < takeNumber; i++) {
-    //   window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
-    // }
+    for (var i = 0; i < MAX_SIMILAR_PIN_COUNT; i++) {
+      window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
+    }
 
-    // for (var j = 0; j < takeNumber; j++) {
-    //   window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
-    // }
+    for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
+      window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
+    }
 
-    // console.log(arr);
+    pinList.appendChild(window.pin.pinFragment);
   };
 
   var successHandler = function (arrAds) {
     ads = arrAds;
     window.main.ads = ads;
-    // createPinsCards(ads);
+    createPinsCards(ads);
     window.form.activeState();
     window.filter.filter();
   };
