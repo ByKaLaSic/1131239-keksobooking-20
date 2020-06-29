@@ -4,7 +4,7 @@
   var filter = function () {
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
-    var pins = document.querySelectorAll('.map__pin');
+    // var pins = document.querySelectorAll('.map__pin');
 
     var getRank = function (pin) {
       var rank = 0;
@@ -35,9 +35,9 @@
         return rankDiff;
       });
 
-      for (var i = 1; i < pins.length; i++) {
-        var pin = pins[i];
-        pin.remove();
+      var offers = document.querySelectorAll('.map__pin:not(.map__pin--main)');
+      for (var i = 0; i < offers.length; i++) {
+        offers[i].remove();
       }
 
       window.sameType = 0;
@@ -47,7 +47,13 @@
         }
       }
 
-      window.main.createPinsCards(adsCopy);
+      var newOffers = [];
+
+      for (i = 0; i < window.sameType; i++) {
+        newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
+      }
+
+      window.main.createPinsCards(newOffers);
     });
   };
 

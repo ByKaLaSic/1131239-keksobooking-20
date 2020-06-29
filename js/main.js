@@ -35,15 +35,19 @@
       takeNumber = MAX_SIMILAR_PIN_COUNT;
     }
 
+    // for (var i = 0; i < takeNumber; i++) {
+    //   window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
+    // }
+
+    // for (var j = 0; j < takeNumber; j++) {
+    //   window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
+    // }
+
     for (var i = 0; i < takeNumber; i++) {
-      window.pin.pinFragment.appendChild(window.pin.getCreatePin(arr[i], i));
+      pinList.appendChild(arr[i]);
+      console.log(arr[i]);
     }
-
-    for (var j = 0; j < takeNumber; j++) {
-      window.card.cardFragment.appendChild(window.card.getCreateCard(arr[j]));
-    }
-
-    pinList.appendChild(window.pin.pinFragment);
+    // console.log(arr);
   };
 
   var successHandler = function (arrAds) {
