@@ -172,6 +172,9 @@
     window.map.mainPin.style.left = ELEMENTARY_MAIN_PIN_X + 'px';
     reset();
     address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
+
+    mainPin.addEventListener('keydown', window.map.onEnterPress);
+    mainPin.addEventListener('mousedown', window.map.onLeftButtonMousePress);
   };
 
   var reset = function () {

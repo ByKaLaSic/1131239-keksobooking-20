@@ -29,6 +29,8 @@
 
   window.map = {
     mainPin: mainPin,
-    map: map
+    map: map,
+    onEnterPress: onEnterPress,
+    onLeftButtonMousePress: onLeftButtonMousePress
   };
 })();
