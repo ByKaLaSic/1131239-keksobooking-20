@@ -54,7 +54,7 @@
       }
     }
 
-    cards.push(cardElement);
+    window.card.cards.push(cardElement);
 
     popupClose.addEventListener('click', function () {
       closePopup();

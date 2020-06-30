@@ -4,7 +4,6 @@
   var filter = function () {
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
-    // var pins = document.querySelectorAll('.map__pin');
     var pinList = document.querySelector('.map__pins');
 
     var getRank = function (pin) {
@@ -49,6 +48,12 @@
       }
 
       var newOffers = [];
+
+      window.card.cards = [];
+
+      for (var j = 0; j < window.sameType; j++) {
+        window.card.getCreateCard(adsCopy[j]);
+      }
 
       for (i = 0; i < window.sameType; i++) {
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));

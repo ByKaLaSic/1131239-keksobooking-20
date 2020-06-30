@@ -30,7 +30,7 @@
     }
 
     for (var j = 0; j < MAX_SIMILAR_PIN_COUNT; j++) {
-      window.card.cardFragment.appendChild(window.card.getCreateCard(ads[j]));
+      window.card.getCreateCard(ads[j]);
     }
 
     pinList.appendChild(window.pin.pinFragment);
