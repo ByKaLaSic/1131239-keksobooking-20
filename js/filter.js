@@ -40,10 +40,10 @@
         offers[i].remove();
       }
 
-      window.sameType = 0;
+      var sameType = 0;
       for (i = 0; i < window.main.ads.length; i++) {
         if (adsCopy[i].offer.type === type.value) {
-          window.sameType += 1;
+          sameType += 1;
         }
       }
 
@@ -51,15 +51,15 @@
 
       window.card.cards = [];
 
-      for (var j = 0; j < window.sameType; j++) {
+      for (var j = 0; j < sameType; j++) {
         window.card.getCreateCard(adsCopy[j]);
       }
 
-      for (i = 0; i < window.sameType; i++) {
+      for (i = 0; i < sameType; i++) {
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
-      var takeNumber = window.sameType > window.main.MAX_SIMILAR_PIN_COUNT ? window.main.MAX_SIMILAR_PIN_COUNT : window.sameType;
+      var takeNumber = sameType > window.main.MAX_SIMILAR_PIN_COUNT ? window.main.MAX_SIMILAR_PIN_COUNT : sameType;
 
       if (document.querySelector('.map__card')) {
         document.querySelector('.map__card').remove();
