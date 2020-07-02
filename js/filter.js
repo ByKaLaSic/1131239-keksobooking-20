@@ -4,12 +4,32 @@
   var filter = function () {
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
+    var price = form.querySelector('#housing-price');
     var pinList = document.querySelector('.map__pins');
+
+    var Price = {
+      low: 10000,
+      high: 50000
+    };
 
     var getRank = function (pin) {
       var rank = 0;
+
       if (pin.offer.type === type.value) {
         rank += 1;
+      }
+
+      if (price.value === 'low' && pin.offer.price <= Price.low) {
+        rank += 1;
+        console.log(pin.offer.price);
+      } else
+      if (price.value === 'high' && pin.offer.price >= Price.high) {
+        rank += 1;
+        console.log(pin.offer.price);
+      } else
+      if (price.value === 'middle' && pin.offer.price >= Price.low && pin.offer.price <= Price.high) {
+        rank += 1;
+        console.log(pin.offer.price);
       }
       return rank;
     };

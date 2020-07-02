@@ -38,6 +38,7 @@
 
   var successHandler = function (arrAds) {
     ads = arrAds;
+    console.log(ads);
     window.main.ads = ads;
     createPinsCards();
     window.form.activeState();
