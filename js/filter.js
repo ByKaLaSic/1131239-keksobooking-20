@@ -18,6 +18,7 @@
     var getRank = function (element) {
       var rank = 0;
       var selectedFeatures = '';
+      var elementFeatures = '';
 
       if (element.offer.type === type.value) {
         rank += 1;
@@ -29,11 +30,12 @@
         }
       }
 
-      if (element.offer.features.indexOf(selectedFeatures) !== -1) {
+      for (var k = 0; k < element.offer.features.length; k++) {
+        elementFeatures += element.offer.features[k] + ' ';
+      }
+
+      if (elementFeatures.indexOf(selectedFeatures) !== -1) {
         rank += 1;
-      } else {
-        // console.log(typeof selectedFeatures);
-        // console.log(typeof element.offer.features);
       }
 
       if (price.value === 'low' && element.offer.price <= Price.LOW) {
