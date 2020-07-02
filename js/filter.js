@@ -83,32 +83,23 @@
         offers[i].remove();
       }
 
-      var sameType = 0;
-      for (i = 0; i < window.main.ads.length; i++) {
-        if (adsCopy[i].offer.type === type.value) {
-          sameType += 1;
-        }
-      }
-
       var newOffers = [];
 
       window.card.cards = [];
 
-      for (var j = 0; j < sameType; j++) {
+      for (var j = 0; j < window.main.MAX_SIMILAR_PIN_COUNT; j++) {
         window.card.getCreateCard(adsCopy[j]);
       }
 
-      for (i = 0; i < sameType; i++) {
+      for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
-
-      var takeNumber = sameType > window.main.MAX_SIMILAR_PIN_COUNT ? window.main.MAX_SIMILAR_PIN_COUNT : sameType;
 
       if (document.querySelector('.map__card')) {
         document.querySelector('.map__card').remove();
       }
 
-      for (i = 0; i < takeNumber; i++) {
+      for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         pinList.appendChild(newOffers[i]);
       }
     });
