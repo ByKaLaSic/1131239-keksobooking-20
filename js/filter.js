@@ -67,7 +67,7 @@
       }
     };
 
-    form.addEventListener('change', function () {
+    var updateWizards = function () {
       var adsCopy = window.main.ads.slice();
 
       adsCopy.sort(function (left, right) {
@@ -102,6 +102,10 @@
       for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         pinList.appendChild(newOffers[i]);
       }
+    };
+
+    form.addEventListener('change', function () {
+      updateWizards();
     });
   };
 
