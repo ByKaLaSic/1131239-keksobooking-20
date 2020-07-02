@@ -31,14 +31,11 @@
         rank += 1;
       }
 
-      // console.log(element.offer.rooms);
       if (String(element.offer.rooms) === rooms.value) {
-        console.log('1');
         rank += 1;
       }
 
       if (String(element.offer.guests) === guests.value) {
-        console.log('2');
         rank += 1;
       }
 
