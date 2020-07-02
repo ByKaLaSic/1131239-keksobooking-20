@@ -8,28 +8,28 @@
     var pinList = document.querySelector('.map__pins');
 
     var Price = {
-      low: 10000,
-      high: 50000
+      LOW: 10000,
+      HIGH: 50000
     };
 
-    var getRank = function (pin) {
+    var getRank = function (element) {
       var rank = 0;
 
-      if (pin.offer.type === type.value) {
+      if (element.offer.type === type.value) {
         rank += 1;
       }
 
-      if (price.value === 'low' && pin.offer.price <= Price.low) {
+      if (price.value === 'low' && element.offer.price <= Price.LOW) {
         rank += 1;
-        console.log(pin.offer.price);
+        console.log(element.offer.price);
       } else
-      if (price.value === 'high' && pin.offer.price >= Price.high) {
+      if (price.value === 'high' && element.offer.price >= Price.HIGH) {
         rank += 1;
-        console.log(pin.offer.price);
+        console.log(element.offer.price);
       } else
-      if (price.value === 'middle' && pin.offer.price >= Price.low && pin.offer.price <= Price.high) {
+      if (price.value === 'middle' && element.offer.price >= Price.LOW && element.offer.price <= Price.HIGH) {
         rank += 1;
-        console.log(pin.offer.price);
+        console.log(element.offer.price);
       }
       return rank;
     };
