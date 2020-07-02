@@ -7,6 +7,7 @@
     var price = form.querySelector('#housing-price');
     var rooms = form.querySelector('#housing-rooms');
     var guests = form.querySelector('#housing-guests');
+    var features = form.querySelectorAll('.map__checkbox');
     var pinList = document.querySelector('.map__pins');
 
     var Price = {
@@ -16,9 +17,23 @@
 
     var getRank = function (element) {
       var rank = 0;
+      var selectedFeatures = '';
 
       if (element.offer.type === type.value) {
         rank += 1;
+      }
+
+      for (var i = 0; i < features.length; i++) {
+        if (features[i].checked) {
+          selectedFeatures += features[i].value + ' ';
+        }
+      }
+
+      if (element.offer.features.indexOf(selectedFeatures) !== -1) {
+        rank += 1;
+      } else {
+        // console.log(typeof selectedFeatures);
+        // console.log(typeof element.offer.features);
       }
 
       if (price.value === 'low' && element.offer.price <= Price.LOW) {
