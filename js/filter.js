@@ -5,6 +5,8 @@
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
     var price = form.querySelector('#housing-price');
+    var rooms = form.querySelector('#housing-rooms');
+    var guests = form.querySelector('#housing-guests');
     var pinList = document.querySelector('.map__pins');
 
     var Price = {
@@ -21,16 +23,25 @@
 
       if (price.value === 'low' && element.offer.price <= Price.LOW) {
         rank += 1;
-        console.log(element.offer.price);
       } else
       if (price.value === 'high' && element.offer.price >= Price.HIGH) {
         rank += 1;
-        console.log(element.offer.price);
       } else
       if (price.value === 'middle' && element.offer.price >= Price.LOW && element.offer.price <= Price.HIGH) {
         rank += 1;
-        console.log(element.offer.price);
       }
+
+      // console.log(element.offer.rooms);
+      if (String(element.offer.rooms) === rooms.value) {
+        console.log('1');
+        rank += 1;
+      }
+
+      if (String(element.offer.guests) === guests.value) {
+        console.log('2');
+        rank += 1;
+      }
+
       return rank;
     };
 
