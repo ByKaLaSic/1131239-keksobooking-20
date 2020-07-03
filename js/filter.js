@@ -107,7 +107,8 @@
     };
 
     form.addEventListener('change', function () {
-      window.debounce(updatePinsCards);
+      // window.debounce(updatePinsCards);
+      updatePinsCards();
     });
   };
 
