@@ -69,7 +69,7 @@
       }
     };
 
-    var updateWizards = function () {
+    var updatePinsCards = function () {
       var adsCopy = window.main.ads.slice();
 
       adsCopy.sort(function (left, right) {
@@ -107,7 +107,7 @@
     };
 
     form.addEventListener('change', function () {
-      updateWizards();
+      window.debounce(updatePinsCards);
     });
   };
 
