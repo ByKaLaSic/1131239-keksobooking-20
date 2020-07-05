@@ -89,7 +89,8 @@
 
       for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         if ((adsCopy[i].offer.type === type.value || type.value === 'any') &&
-            (String(adsCopy[i].offer.rooms) === rooms.value || rooms.value === 'any')) {
+            (String(adsCopy[i].offer.rooms) === rooms.value || rooms.value === 'any') &&
+            (String(adsCopy[i].offer.guests) === guests.value || guests.value === 'any')) {
           index += 1;
         }
       }
