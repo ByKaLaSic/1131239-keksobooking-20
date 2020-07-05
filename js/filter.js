@@ -17,24 +17,26 @@
 
     var getRank = function (element) {
       var rank = 0;
-      var selectedFeatures = '';
       var elementFeatures = '';
+      var booleanFeatures = true;
 
       if (element.offer.type === type.value) {
         rank += 1;
-      }
-
-      for (var i = 0; i < features.length; i++) {
-        if (features[i].checked) {
-          selectedFeatures += features[i].value + ' ';
-        }
       }
 
       for (var k = 0; k < element.offer.features.length; k++) {
         elementFeatures += element.offer.features[k] + ' ';
       }
 
-      if (elementFeatures.indexOf(selectedFeatures) !== -1) {
+      for (var i = 0; i < features.length; i++) {
+        if (features[i].checked) {
+          if (elementFeatures.indexOf(features[i].value) === -1) {
+            booleanFeatures = false;
+          }
+        }
+      }
+
+      if (booleanFeatures) {
         rank += 1;
       }
 
@@ -94,27 +96,23 @@
             ((price.value === 'low' && adsCopy[i].offer.price <= Price.LOW) ||
              (price.value === 'high' && adsCopy[i].offer.price >= Price.HIGH) ||
              (price.value === 'middle' && adsCopy[i].offer.price >= Price.LOW && adsCopy[i].offer.price <= Price.HIGH) || price.value === 'any')) {
-          var selectedFeatures = '';
           var elementFeatures = '';
-          for (var j = 0; j < features.length; j++) {
-            if (features[j].checked) {
-              selectedFeatures += features[j].value + ' ';
-            }
-          }
+          var booleanFeatures = true;
 
           for (var k = 0; k < adsCopy[i].offer.features.length; k++) {
             elementFeatures += adsCopy[i].offer.features[k] + ' ';
           }
 
-          if ((elementFeatures.indexOf(selectedFeatures) !== -1)) {
+          for (var j = 0; j < features.length; j++) {
+            if (features[j].checked) {
+              if (elementFeatures.indexOf(features[j].value) === -1) {
+                booleanFeatures = false;
+              }
+            }
+          }
+
+          if (booleanFeatures) {
             index += 1;
-            console.log(elementFeatures);
-            console.log(selectedFeatures);
-            console.log('********************');
-          } else {
-            console.log(elementFeatures);
-            console.log(selectedFeatures);
-            console.log('\\\\\\\\\\\\\\\\\\\\');
           }
         }
       }
@@ -123,7 +121,7 @@
 
       window.card.cards = [];
 
-      for (var j = 0; j < index; j++) {
+      for (j = 0; j < index; j++) {
         window.card.getCreateCard(adsCopy[j]);
       }
 
