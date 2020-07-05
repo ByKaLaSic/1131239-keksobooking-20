@@ -96,9 +96,9 @@
              (price.value === 'middle' && adsCopy[i].offer.price >= Price.LOW && adsCopy[i].offer.price <= Price.HIGH) || price.value === 'any')) {
           var selectedFeatures = '';
           var elementFeatures = '';
-          for (i = 0; i < features.length; i++) {
-            if (features[i].checked) {
-              selectedFeatures += features[i].value + ' ';
+          for (var j = 0; j < features.length; j++) {
+            if (features[j].checked) {
+              selectedFeatures += features[j].value + ' ';
             }
           }
 
@@ -106,8 +106,15 @@
             elementFeatures += adsCopy[i].offer.features[k] + ' ';
           }
 
-          if (elementFeatures.indexOf(selectedFeatures) !== -1) {
+          if ((elementFeatures.indexOf(selectedFeatures) !== -1)) {
             index += 1;
+            console.log(elementFeatures);
+            console.log(selectedFeatures);
+            console.log('********************');
+          } else {
+            console.log(elementFeatures);
+            console.log(selectedFeatures);
+            console.log('\\\\\\\\\\\\\\\\\\\\');
           }
         }
       }
