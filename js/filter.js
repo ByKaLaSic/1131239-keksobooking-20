@@ -94,7 +94,21 @@
             ((price.value === 'low' && adsCopy[i].offer.price <= Price.LOW) ||
              (price.value === 'high' && adsCopy[i].offer.price >= Price.HIGH) ||
              (price.value === 'middle' && adsCopy[i].offer.price >= Price.LOW && adsCopy[i].offer.price <= Price.HIGH) || price.value === 'any')) {
-          index += 1;
+          var selectedFeatures = '';
+          var elementFeatures = '';
+          for (i = 0; i < features.length; i++) {
+            if (features[i].checked) {
+              selectedFeatures += features[i].value + ' ';
+            }
+          }
+
+          for (var k = 0; k < adsCopy[i].offer.features.length; k++) {
+            elementFeatures += adsCopy[i].offer.features[k] + ' ';
+          }
+
+          if (elementFeatures.indexOf(selectedFeatures) !== -1) {
+            index += 1;
+          }
         }
       }
 
