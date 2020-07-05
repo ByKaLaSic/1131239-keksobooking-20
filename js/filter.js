@@ -85,15 +85,23 @@
         offers[i].remove();
       }
 
+      var index = 0;
+
+      for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
+        if (type.value === adsCopy[i].offer.type || type.value === 'any') {
+          index += 1;
+        }
+      }
+
       var newOffers = [];
 
       window.card.cards = [];
 
-      for (var j = 0; j < window.main.MAX_SIMILAR_PIN_COUNT; j++) {
+      for (var j = 0; j < index; j++) {
         window.card.getCreateCard(adsCopy[j]);
       }
 
-      for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
+      for (i = 0; i < index; i++) {
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
@@ -101,7 +109,7 @@
         document.querySelector('.map__card').remove();
       }
 
-      for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
+      for (i = 0; i < index; i++) {
         pinList.appendChild(newOffers[i]);
       }
     };
