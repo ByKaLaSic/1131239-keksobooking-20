@@ -90,7 +90,10 @@
       for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         if ((adsCopy[i].offer.type === type.value || type.value === 'any') &&
             (String(adsCopy[i].offer.rooms) === rooms.value || rooms.value === 'any') &&
-            (String(adsCopy[i].offer.guests) === guests.value || guests.value === 'any')) {
+            (String(adsCopy[i].offer.guests) === guests.value || guests.value === 'any') &&
+            ((price.value === 'low' && adsCopy[i].offer.price <= Price.LOW) ||
+             (price.value === 'high' && adsCopy[i].offer.price >= Price.HIGH) ||
+             (price.value === 'middle' && adsCopy[i].offer.price >= Price.LOW && adsCopy[i].offer.price <= Price.HIGH) || price.value === 'any')) {
           index += 1;
         }
       }
