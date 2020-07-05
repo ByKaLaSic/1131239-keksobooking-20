@@ -87,7 +87,7 @@
         offers[i].remove();
       }
 
-      var index = 0;
+      var numberOfObjects = 0;
 
       for (i = 0; i < window.main.MAX_SIMILAR_PIN_COUNT; i++) {
         if ((adsCopy[i].offer.type === type.value || type.value === 'any') &&
@@ -112,7 +112,7 @@
           }
 
           if (booleanFeatures) {
-            index += 1;
+            numberOfObjects += 1;
           }
         }
       }
@@ -121,11 +121,11 @@
 
       window.card.cards = [];
 
-      for (j = 0; j < index; j++) {
+      for (j = 0; j < numberOfObjects; j++) {
         window.card.getCreateCard(adsCopy[j]);
       }
 
-      for (i = 0; i < index; i++) {
+      for (i = 0; i < numberOfObjects; i++) {
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
@@ -133,7 +133,7 @@
         document.querySelector('.map__card').remove();
       }
 
-      for (i = 0; i < index; i++) {
+      for (i = 0; i < numberOfObjects; i++) {
         pinList.appendChild(newOffers[i]);
       }
     };
