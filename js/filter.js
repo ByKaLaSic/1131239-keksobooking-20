@@ -139,8 +139,7 @@
     };
 
     form.addEventListener('change', function () {
-      // window.debounce(updatePinsCards);
-      updatePinsCards();
+      window.debounce(updatePinsCards)();
     });
   };
 
