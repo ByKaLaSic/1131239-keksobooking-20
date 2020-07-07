@@ -130,7 +130,7 @@
       }
 
       if (document.querySelector('.map__card')) {
-        document.querySelector('.map__card').remove();
+        window.card.closePopup();
       }
 
       for (i = 0; i < numberOfObjects; i++) {
