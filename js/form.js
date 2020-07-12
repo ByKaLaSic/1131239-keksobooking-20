@@ -179,6 +179,7 @@
     reset();
     address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
 
+    filterForm.reset();
     mainPin.addEventListener('keydown', window.map.onEnterPress);
     mainPin.addEventListener('mousedown', window.map.onLeftButtonMousePress);
   };
