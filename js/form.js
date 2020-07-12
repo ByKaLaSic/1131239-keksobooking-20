@@ -54,6 +54,8 @@
       if (this[window.main.HousesTypes[type.value]] > price.value) {
         price.setCustomValidity('Маленькая стоимость');
         return;
+      } else {
+        checkMaxPrice();
       }
       price.setCustomValidity('');
     }
@@ -61,11 +63,15 @@
 
   price.addEventListener('change', function () {
     selectPriceValidation.setCustomValidity();
+    checkMaxPrice();
+  });
+
+  var checkMaxPrice = function () {
     var MAX_PRICE = 1000000;
     if (price.value > MAX_PRICE) {
       price.setCustomValidity('Цена должна быть не больше 1000000');
     }
-  });
+  };
 
   type.addEventListener('change', function () {
     selectPriceValidation.setCustomValidity();
