@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var FILE_TYPES = ['jpeg', 'png'];
+  var FILE_TYPES = ['jpeg', 'png', 'jpg'];
 
   var form = document.querySelector('.ad-form');
   var fileUserPhoto = form.querySelector('.ad-form-header__input');

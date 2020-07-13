@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-
   var MIN_RANGE_X = 0;
   var MAX_RANGE_X = window.map.map.offsetWidth;
   var MIN_RANGE_Y = 130;
@@ -66,5 +65,4 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
 })();
