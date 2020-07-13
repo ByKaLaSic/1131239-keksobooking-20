@@ -179,6 +179,11 @@
     adForm.reset();
     address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
     filterForm.reset();
+
+    if (document.querySelector('.map__card')) {
+      window.card.closePopup();
+    }
+
     mainPin.addEventListener('keydown', window.map.onEnterPress);
     mainPin.addEventListener('mousedown', window.map.onLeftButtonMousePress);
   };
