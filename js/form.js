@@ -97,7 +97,7 @@
   var onSuccessEscPress = function (evt) {
     if (window.utils.isEscPressed(evt)) {
       closeSuccess();
-      reverseActiveState(reset);
+      reverseActiveState();
     }
   };
 
@@ -119,7 +119,7 @@
 
   success.addEventListener('click', function () {
     closeSuccess();
-    reverseActiveState(reset);
+    reverseActiveState();
   });
 
   error.addEventListener('click', function () {
@@ -155,7 +155,7 @@
     }
   };
 
-  var reverseActiveState = function (reset) {
+  var reverseActiveState = function () {
     var ELEMENTARY_MAIN_PIN_X = 570;
     var ELEMENTARY_MAIN_PIN_Y = 375;
     map.classList.add('map--faded');
@@ -176,21 +176,15 @@
 
     window.map.mainPin.style.top = ELEMENTARY_MAIN_PIN_Y + 'px';
     window.map.mainPin.style.left = ELEMENTARY_MAIN_PIN_X + 'px';
-    reset();
+    adForm.reset();
     address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
-
     filterForm.reset();
     mainPin.addEventListener('keydown', window.map.onEnterPress);
     mainPin.addEventListener('mousedown', window.map.onLeftButtonMousePress);
   };
 
-  var reset = function () {
-    adForm.reset();
-    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight + ANGLE_HEIGHT_MAIN_PIN);
-  };
-
   resetButton.addEventListener('click', function () {
-    reset();
+    reverseActiveState();
   });
 
   window.form = {
