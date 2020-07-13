@@ -39,7 +39,12 @@
       cardElement.querySelector('.popup__text--capacity').classList.add('hidden');
     }
 
-    makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
+    if (publicity.offer.checkin !== '0:00' && publicity.offer.checkout !== '0:00') {
+      makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
+    } else {
+      cardElement.querySelector('.popup__text--time').classList.add('hidden');
+    }
+
     makeTextElement('.popup__description', publicity.offer.description);
     cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
