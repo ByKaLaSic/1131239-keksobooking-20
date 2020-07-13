@@ -19,6 +19,10 @@
       if (document.querySelector('.map__card')) {
         document.querySelector('.map__card').remove();
       }
+      if (document.querySelector('.map__pin.map__pin--active')) {
+        document.querySelector('.map__pin.map__pin--active').classList.remove('map__pin--active');
+      }
+      pinElement.classList.add('map__pin--active');
       map.insertBefore(window.card.cards[NumberArr], adFilter);
       document.addEventListener('keydown', window.card.onPopupEscPress);
     };
