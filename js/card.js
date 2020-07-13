@@ -8,7 +8,9 @@
   var closePopup = function () {
     document.querySelector('.map__card').remove();
     document.removeEventListener('keydown', onPopupEscPress);
-    document.querySelector('.map__pin.map__pin--active').classList.remove('map__pin--active');
+    if (document.querySelector('.map__pin.map__pin--active')) {
+      document.querySelector('.map__pin.map__pin--active').classList.remove('map__pin--active');
+    }
   };
 
   var onPopupEscPress = function (evt) {
