@@ -32,7 +32,13 @@
     makeTextElement('.popup__text--address', publicity.offer.address);
     makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
     makeTextElement('.popup__type', window.main.HousesTypes[publicity.offer.type]);
-    makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
+
+    if (publicity.offer.rooms || publicity.offer.guests) {
+      makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
+    } else {
+      cardElement.querySelector('.popup__text--capacity').classList.add('hidden');
+    }
+
     makeTextElement('.popup__text--time', 'Заезд поесле ' + publicity.offer.checkin + ', выезд до ' + publicity.offer.checkout);
     makeTextElement('.popup__description', publicity.offer.description);
     cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
