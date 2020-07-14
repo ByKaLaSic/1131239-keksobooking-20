@@ -126,18 +126,18 @@
     closeError();
   });
 
-  var successHandler = function () {
+  var onSuccess = function () {
     main.append(success);
     document.addEventListener('keydown', onSuccessEscPress);
   };
 
-  var errorHandler = function () {
+  var onError = function () {
     main.append(error);
     document.addEventListener('keydown', onErrorEscPress);
   };
 
   adForm.addEventListener('submit', function (evt) {
-    window.upload(new FormData(adForm), successHandler, errorHandler);
+    window.upload(new FormData(adForm), onSuccess, onError);
     evt.preventDefault();
   });
 

@@ -12,7 +12,7 @@
   var ads;
   var pinList = document.querySelector('.map__pins');
 
-  var errorHandler = function (errorMessage) {
+  var onError = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
     node.style.position = 'absolute';
@@ -36,7 +36,7 @@
     pinList.appendChild(window.pin.pinFragment);
   };
 
-  var successHandler = function (arrAds) {
+  var onSuccess = function (arrAds) {
     ads = arrAds;
     window.main.ads = ads;
     createPinsCards();
@@ -46,8 +46,8 @@
 
   window.main = {
     HousesTypes: HousesTypes,
-    errorHandler: errorHandler,
-    successHandler: successHandler,
+    onError: onError,
+    onSuccess: onSuccess,
     ads: ads,
     createPinsCards: createPinsCards,
     MAX_SIMILAR_PIN_COUNT: MAX_SIMILAR_PIN_COUNT

@@ -7,7 +7,7 @@
   var onMainPinPress = function () {
     mainPin.removeEventListener('keydown', onEnterPress);
     mainPin.removeEventListener('mousedown', onLeftButtonMousePress);
-    window.load(window.main.successHandler, window.main.errorHandler);
+    window.load(window.main.onSuccess, window.main.onError);
   };
 
   var onEnterPress = function (evt) {
