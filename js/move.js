@@ -5,6 +5,7 @@
   var MAX_RANGE_X = window.map.map.offsetWidth;
   var MIN_RANGE_Y = 130;
   var MAX_RANGE_Y = 630;
+  var DEFICIENT = 0.5;
 
   window.map.mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -41,7 +42,7 @@
             window.map.mainPin.style.left = window.map.mainPin.offsetWidth / -2 + 'px';
             break;
           case angleForX <= MAX_RANGE_X:
-            window.map.mainPin.style.left = MAX_RANGE_X - Math.round(window.map.mainPin.offsetWidth / 2) - 0.5 + 'px';
+            window.map.mainPin.style.left = MAX_RANGE_X - Math.round(window.map.mainPin.offsetWidth / 2) - DEFICIENT + 'px';
             break;
           case angleForY >= MIN_RANGE_Y:
             window.map.mainPin.style.top = MIN_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
