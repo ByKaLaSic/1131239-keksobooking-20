@@ -57,7 +57,7 @@
       popupFeaturesList.appendChild(featureElement);
     }
 
-    if (publicity.offer.photos === []) {
+    if (publicity.offer.photos.length !== 0) {
       for (i = 0; i < publicity.offer.photos.length; i++) {
         if (i === 0) {
           var photo = blcokPhotos.querySelector('.popup__photo');
