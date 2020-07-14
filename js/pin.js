@@ -17,8 +17,9 @@
 
     var openPopup = function () {
       var acticePin = document.querySelector('.map__pin.map__pin--active');
-      if (document.querySelector('.map__card')) {
-        document.querySelector('.map__card').remove();
+      var activeCard = document.querySelector('.map__card');
+      if (activeCard) {
+        activeCard.remove();
       }
       if (acticePin) {
         acticePin.classList.remove('map__pin--active');
