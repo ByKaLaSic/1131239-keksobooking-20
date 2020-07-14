@@ -16,11 +16,12 @@
     pinElement.querySelector('img').alt = publicity.offer.title;
 
     var openPopup = function () {
+      var acticePin = document.querySelector('.map__pin.map__pin--active');
       if (document.querySelector('.map__card')) {
         document.querySelector('.map__card').remove();
       }
-      if (document.querySelector('.map__pin.map__pin--active')) {
-        document.querySelector('.map__pin.map__pin--active').classList.remove('map__pin--active');
+      if (acticePin) {
+        acticePin.classList.remove('map__pin--active');
       }
       pinElement.classList.add('map__pin--active');
       map.insertBefore(window.card.cards[NumberArr], adFilter);

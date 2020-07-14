@@ -72,6 +72,7 @@
 
     var updatePinsCards = function () {
       var adsCopy = window.main.ads.slice();
+      var activeCard = document.querySelector('.map__card');
 
       adsCopy.sort(function (left, right) {
         var rankDiff = getRank(right) - getRank(left);
@@ -128,7 +129,7 @@
         newOffers.push(window.pin.getCreatePin(adsCopy[i], i));
       }
 
-      if (document.querySelector('.map__card')) {
+      if (activeCard) {
         window.card.closePopup();
       }
 
