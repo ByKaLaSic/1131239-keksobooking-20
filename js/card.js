@@ -34,6 +34,7 @@
     makeTextElement('.popup__text--address', publicity.offer.address);
     makeTextElement('.popup__text--price', publicity.offer.price + '₽/ночь');
     makeTextElement('.popup__type', window.main.HousesTypes[publicity.offer.type]);
+    makeTextElement('.popup__description', publicity.offer.description);
 
     if (publicity.offer.rooms || publicity.offer.guests) {
       makeTextElement('.popup__text--capacity', publicity.offer.rooms + ' комнаты для ' + publicity.offer.guests + ' гостей');
@@ -47,7 +48,6 @@
       cardElement.querySelector('.popup__text--time').classList.add('hidden');
     }
 
-    makeTextElement('.popup__description', publicity.offer.description);
     cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
     for (var i = 0; i < publicity.offer.features.length; i++) {
@@ -57,15 +57,19 @@
       popupFeaturesList.appendChild(featureElement);
     }
 
-    for (i = 0; i < publicity.offer.photos.length; i++) {
-      if (i === 0) {
-        var photo = blcokPhotos.querySelector('.popup__photo');
-        photo.src = publicity.offer.photos[0];
-      } else {
-        var newPhoto = photo.cloneNode();
-        newPhoto.src = publicity.offer.photos[i];
-        blcokPhotos.appendChild(newPhoto);
+    if (publicity.offer.photos === []) {
+      for (i = 0; i < publicity.offer.photos.length; i++) {
+        if (i === 0) {
+          var photo = blcokPhotos.querySelector('.popup__photo');
+          photo.src = publicity.offer.photos[0];
+        } else {
+          var newPhoto = photo.cloneNode();
+          newPhoto.src = publicity.offer.photos[i];
+          blcokPhotos.appendChild(newPhoto);
+        }
       }
+    } else {
+      blcokPhotos.classList.add('hidden');
     }
 
     window.card.cards.push(cardElement);
