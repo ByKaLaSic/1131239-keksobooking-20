@@ -2,6 +2,10 @@
 
 (function () {
   var filter = function () {
+    var Price = {
+      LOW: 10000,
+      HIGH: 50000
+    };
     var form = document.querySelector('.map__filters');
     var type = form.querySelector('#housing-type');
     var price = form.querySelector('#housing-price');
@@ -9,11 +13,6 @@
     var guests = form.querySelector('#housing-guests');
     var features = form.querySelectorAll('.map__checkbox');
     var pinList = document.querySelector('.map__pins');
-
-    var Price = {
-      LOW: 10000,
-      HIGH: 50000
-    };
 
     var getRank = function (element) {
       var rank = 0;

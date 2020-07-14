@@ -2,6 +2,8 @@
 
 (function () {
   var ANGLE_HEIGHT_MAIN_PIN = 15;
+  var ELEMENTARY_MAIN_PIN_X = 570;
+  var ELEMENTARY_MAIN_PIN_Y = 375;
   var map = document.querySelector('.map');
   var mainPin = document.querySelector('.map__pin--main');
   var adForm = document.querySelector('.ad-form');
@@ -156,8 +158,6 @@
   };
 
   var reverseActiveState = function () {
-    var ELEMENTARY_MAIN_PIN_X = 570;
-    var ELEMENTARY_MAIN_PIN_Y = 375;
     map.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     var pins = document.querySelectorAll('.map__pin');
