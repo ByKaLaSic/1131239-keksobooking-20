@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var PIN_WIDTH = 50
+  var PIN_WIDTH = 50;
   var PIN_HEIGHT = 70;
   var pinTemplate = document.querySelector('#pin').content.querySelector('.map__pin');
   var adFilter = document.querySelector('.map__filters-container');
