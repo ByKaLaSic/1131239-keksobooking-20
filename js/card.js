@@ -59,16 +59,17 @@
     });
 
     if (publicity.offer.photos.length !== 0) {
-      for (var i = 0; i < publicity.offer.photos.length; i++) {
-        if (i === 0) {
+      publicity.offer.photos.forEach(function (it, index, array) {
+        if (index === 0) {
           var photo = blcokPhotos.querySelector('.popup__photo');
-          photo.src = publicity.offer.photos[0];
+          photo.src = array[index];
         } else {
+          photo = blcokPhotos.querySelector('.popup__photo');
           var newPhoto = photo.cloneNode();
-          newPhoto.src = publicity.offer.photos[i];
+          newPhoto.src = it;
           blcokPhotos.appendChild(newPhoto);
         }
-      }
+      });
     } else {
       blcokPhotos.classList.add('hidden');
     }
