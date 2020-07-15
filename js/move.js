@@ -5,7 +5,6 @@
   var MAX_RANGE_X = window.map.map.offsetWidth;
   var MIN_RANGE_Y = 130;
   var MAX_RANGE_Y = 630;
-  var DEFICIENT = 0.5;
 
   window.map.mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
