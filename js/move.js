@@ -18,9 +18,6 @@
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
 
-      var angleForX = window.map.mainPin.offsetLeft + Math.round(window.map.mainPin.offsetWidth / 2);
-      var angleForY = window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN;
-
       var shift = {
         x: startCoords.x - moveEvt.clientX,
         y: startCoords.y - moveEvt.clientY
@@ -31,26 +28,20 @@
         y: moveEvt.clientY
       };
 
-      if (angleForX >= MIN_RANGE_X && angleForX <= MAX_RANGE_X &&
-        angleForY >= MIN_RANGE_Y && angleForY <= MAX_RANGE_Y) {
-
-        window.map.mainPin.style.top = (window.map.mainPin.offsetTop - shift.y) + 'px';
-        window.map.mainPin.style.left = (window.map.mainPin.offsetLeft - shift.x) + 'px';
+      if (window.map.mainPin.offsetLeft - shift.x < MIN_RANGE_X - window.map.mainPin.offsetWidth / 2) {
+        window.map.mainPin.style.left = window.map.mainPin.offsetWidth / -2 + 'px';
+      } else if (window.map.mainPin.offsetLeft - shift.x > MAX_RANGE_X - window.map.mainPin.offsetWidth / 2) {
+        window.map.mainPin.style.left = window.map.offsetWidth - window.map.mainPin.offsetWidth / 2 + 'px';
       } else {
-        switch (false) {
-          case angleForX >= MIN_RANGE_X:
-            window.map.mainPin.style.left = window.map.mainPin.offsetWidth / -2 + 'px';
-            break;
-          case angleForX <= MAX_RANGE_X:
-            window.map.mainPin.style.left = MAX_RANGE_X - Math.round(window.map.mainPin.offsetWidth / 2) - DEFICIENT + 'px';
-            break;
-          case angleForY >= MIN_RANGE_Y:
-            window.map.mainPin.style.top = MIN_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
-            break;
-          case angleForY <= MAX_RANGE_Y:
-            window.map.mainPin.style.top = MAX_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
-            break;
-        }
+        window.map.mainPin.style.left = (window.map.mainPin.offsetLeft - shift.x) + 'px';
+      }
+
+      if (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN - shift.y < MIN_RANGE_Y) {
+        window.map.mainPin.style.top = MIN_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
+      } else if (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN - shift.y > MAX_RANGE_Y) {
+        window.map.mainPin.style.top = MAX_RANGE_Y - window.map.mainPin.offsetHeight - window.form.ANGLE_HEIGHT_MAIN_PIN + 'px';
+      } else {
+        window.map.mainPin.style.top = (window.map.mainPin.offsetTop - shift.y) + 'px';
       }
 
       window.form.address.value = window.map.mainPin.offsetLeft + Math.round(window.map.mainPin.offsetWidth / 2) + ', ' + (window.map.mainPin.offsetTop + window.map.mainPin.offsetHeight + window.form.ANGLE_HEIGHT_MAIN_PIN);
