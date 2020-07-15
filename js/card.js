@@ -51,15 +51,15 @@
 
     cardElement.querySelector('.popup__avatar').src = publicity.author.avatar;
 
-    for (var i = 0; i < publicity.offer.features.length; i++) {
+    publicity.offer.features.forEach(function (it) {
       var featureElement = document.createElement('li');
       featureElement.classList.add('popup__feature');
-      featureElement.classList.add('popup__feature--' + publicity.offer.features[i]);
+      featureElement.classList.add('popup__feature--' + it);
       popupFeaturesList.appendChild(featureElement);
-    }
+    });
 
     if (publicity.offer.photos.length !== 0) {
-      for (i = 0; i < publicity.offer.photos.length; i++) {
+      for (var i = 0; i < publicity.offer.photos.length; i++) {
         if (i === 0) {
           var photo = blcokPhotos.querySelector('.popup__photo');
           photo.src = publicity.offer.photos[0];
