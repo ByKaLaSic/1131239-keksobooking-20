@@ -23,9 +23,9 @@
         rank += 1;
       }
 
-      for (var k = 0; k < element.offer.features.length; k++) {
-        elementFeatures += element.offer.features[k] + ' ';
-      }
+      element.offer.features.forEach(function (it) {
+        elementFeatures += it + ' ';
+      });
 
       for (var i = 0; i < features.length; i++) {
         if (features[i].checked) {
