@@ -17,7 +17,7 @@
   var timein = adForm.querySelector('#timein');
   var timeout = adForm.querySelector('#timeout');
   var address = document.querySelector('#address');
-  address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
+  address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + Math.round(mainPin.offsetTop + mainPin.offsetHeight / 2);
   var pinList = document.querySelector('.map__pins');
   var resetButton = document.querySelector('.ad-form__reset');
   var success = document.querySelector('#success').content.querySelector('.success');
@@ -177,7 +177,7 @@
     window.map.mainPin.style.top = ELEMENTARY_MAIN_PIN_Y + 'px';
     window.map.mainPin.style.left = ELEMENTARY_MAIN_PIN_X + 'px';
     adForm.reset();
-    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + (mainPin.offsetTop + mainPin.offsetHeight / 2);
+    address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + Math.round(mainPin.offsetTop + mainPin.offsetHeight / 2);
     filterForm.reset();
 
     if (document.querySelector('.map__card')) {
