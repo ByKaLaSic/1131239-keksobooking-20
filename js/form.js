@@ -161,6 +161,8 @@
     map.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     var pins = document.querySelectorAll('.map__pin');
+    var userPreview = document.querySelector('.ad-form-header__preview');
+    var apartmentPreviews = document.querySelectorAll('.ad-form__photo');
 
     for (i = 0; i < filterFormChildren.length; i++) {
       filterFormChildren[i].setAttribute('disabled', 'true');
@@ -174,9 +176,21 @@
       pinList.removeChild(pins[i]);
     }
 
+    for (i = apartmentPreviews.length; i > 1; i--) {
+      apartmentPreviews[i - 1].remove();
+    }
+
+    var lastApartmentPreviewsPhoto = document.querySelector('.ad-form__photo').querySelector('img');
+    if (lastApartmentPreviewsPhoto) {
+      lastApartmentPreviewsPhoto.remove();
+    }
+
+    window.avatar.photoСounter = 0;
+
     window.map.mainPin.style.top = ELEMENTARY_MAIN_PIN_Y + 'px';
     window.map.mainPin.style.left = ELEMENTARY_MAIN_PIN_X + 'px';
     adForm.reset();
+    userPreview.querySelector('img').src = 'img/muffin-grey.svg';
     address.value = mainPin.offsetLeft + Math.round(mainPin.offsetWidth / 2) + ', ' + Math.round(mainPin.offsetTop + mainPin.offsetHeight / 2);
     filterForm.reset();
 

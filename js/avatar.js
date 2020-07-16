@@ -45,17 +45,21 @@
         image.src = reader.result;
         image.width = 70;
         image.height = 70;
-        if (photoСounter > 0) {
+        if (window.avatar.photoСounter > 0) {
           var apartmentPreviewClone = apartmentPreview.cloneNode(false);
           apartmentPreviewClone.appendChild(image);
-          apartmentPreview.insertAdjacentElement('beforebegin', apartmentPreviewClone);
+          apartmentPreview.insertAdjacentElement('afterend', apartmentPreviewClone);
         } else {
           apartmentPreview.appendChild(image);
         }
-        photoСounter++;
+        window.avatar.photoСounter++;
       });
 
       reader.readAsDataURL(file);
     }
   });
+
+  window.avatar = {
+    photoСounter: photoСounter
+  };
 })();
